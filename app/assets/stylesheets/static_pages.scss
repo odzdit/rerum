@@ -1,0 +1,93 @@
+// Place all the styles related to the static_pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.banner {
+	padding-left: 10%;
+	padding-right: 10%;
+	background-image: image-url("iStock_83222663_MEDIUM.jpg");
+	background-color: lightblue;
+	height: 600px;
+	background-size: 100%;
+	opacity:100%; 
+}
+
+h1 {
+	text-align: center;
+	color:white;
+}
+
+h2 {
+	text-align: center;
+	color:white;
+}
+
+
+.navbar {
+	margin: 0;
+}
+
+.square {
+	background-color: black;
+	width:26%;
+	height:300px;
+	display: inline-block;
+	margin-left: 5%;
+}
+
+.left {
+	padding-left:10%;
+	padding-top:20px;
+
+}
+
+.right {
+	padding-right:10%;
+	padding-top:20px;
+}
+
+.image{
+	height: 200px;
+	width: 350px;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+li {
+    display: block;
+    font-size: 18px;
+}
+
+.list > li:before {
+    /*Using a Bootstrap glyphicon as the bullet point*/
+    content: "\e013";
+    font-family: 'Glyphicons Halflings';
+    font-size: 14px;
+    float: left;
+    margin-top: 4px;
+    margin-left: -20px;
+    color: black;
+}
+
+.body {
+	padding-top: 10px;
+}
+
+.icon{
+	display: inline;
+    margin-right: 20px;
+	margin-left: 20px;
+}
+
+.style_icon{
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+.footer {
+	background-color: #5CB85C;
+	height: 300px;
+	background-size: 100%;
+	color: white;
+}
