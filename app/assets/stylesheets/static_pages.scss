@@ -12,6 +12,9 @@
 	opacity:100%; 
 }
 
+.dash-title {
+	color: black;
+}
 h1 {
 	text-align: center;
 	color:white;
@@ -21,6 +24,12 @@ h2 {
 	text-align: center;
 	color:white;
 }
+
+h3 {
+	text-align: center;
+	color:white;
+}
+
 
 
 .navbar {
@@ -91,3 +100,8 @@ li {
 	background-size: 100%;
 	color: white;
 }
+
+.recommendation {
+ 	width:70%; 
+    margin-left:15%; 
+    margin-right:15%;}

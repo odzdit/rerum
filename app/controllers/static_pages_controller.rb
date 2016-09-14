@@ -24,7 +24,7 @@ class StaticPagesController < ApplicationController
                 }
               ]
             } 
-            @options = {:width => 800, :height => 300}             
+            @options = {:width => 1000, :height => 300}             
 	end
 
 end
