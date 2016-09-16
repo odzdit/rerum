@@ -35,7 +35,9 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-google'
 gem "figaro"
-# gem 'activeadmin', github: 'activeadmin'
+gem 'activeadmin', '~> 1.0.0.pre4'
+gem 'google-adwords-api'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
 
 gem 'rails_12factor', group: :production
