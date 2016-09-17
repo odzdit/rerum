@@ -35,8 +35,8 @@ def download_criteria_report(file_name)
   # Define report definition. You can also pass your own XML text as a string.
   report_definition = {
     :selector => {
-      :fields => ['AdGroupName', 'AdGroupId', 'Impressions', 'Clicks', 'Cost', 'AverageCpc', 'AveragePosition', 'Date'],
-    },
+       :fields => ['Impressions', 'Clicks', 'Cost', 'AverageCpc', 'AveragePosition', 'Date'],
+        },
     :report_name => 'Last 7 days ADGROUP_PERFORMANCE_REPORT',
     :report_type => 'ADGROUP_PERFORMANCE_REPORT',
     :download_format => 'CSV',
@@ -63,7 +63,7 @@ if __FILE__ == $0
 
   begin
     # File name to write report to.
-    file_name = 'Adgroup Report'
+    file_name = 'Adgroup Report 2'
     download_criteria_report(file_name)
 
   # Authorization error.

@@ -3,16 +3,18 @@ class DashboardController < ApplicationController
 def dashboard
         @adwords_data = download_criteria_report()
             data_hash = Hash.from_xml(@adwords_data)
-            data_json = JSON.parse(data_hash.to_json)
+            data_json = JSON.parse(data_hash.to_json)["report"]["table"]["row"]
 
 	            impressions = []
 				clicks = []
 				cost = []
 				dates = []
 
-				p data_json["report"]["table"]["row"]
+				data_json.sort_by! do |item|
+					item["day"]
+				end
 
-				data_json["report"]["table"]["row"].each do |object|
+				data_json.each do |object|
 					# object["impressions"]
 				    impressions.push(object["impressions"])
 				    clicks.push(object["clicks"])
@@ -20,6 +22,12 @@ def dashboard
 				    dates.push(object["day"])
 				  end
 				  
+				  cost2 = cost.map do |cost|
+					new_cost = cost.to_i
+					decimal_cost = new_cost/1000000
+					decimal_cost.to_f
+				end
+
 
 			 @data = {
 			  labels: dates,
@@ -27,20 +35,14 @@ def dashboard
                 {
                     label: "Impressions",
                     backgroundColor: "rgba(220,220,220,0.2)",
-                    borderColor: "rgba(220,220,220,1)",
+                    borderColor: "rgba(49,136,253,.8)",
                     data: impressions
-                },
-                {
-                    label: "Clicks",
-                    backgroundColor: "rgba(151,187,205,0.2)",
-                    borderColor: "rgba(151,187,205,1)",
-                    data: clicks
                 },
                 { 
                     label: "Cost",
                     backgroundColor: "rgba(151,187,205,0.2)",
                     borderColor: "rgba(151,187,205,1)",
-                    data: impressions
+                    data: cost
                 }
               ]
             } 
@@ -64,12 +66,12 @@ private
       # Define report definition. You can also pass your own XML text as a string.
       report_definition = {
         :selector => {
-          :fields => ['AdGroupName', 'AdGroupId', 'Impressions', 'Clicks', 'Cost', 'AverageCpc', 'AveragePosition', 'Date'],
+          :fields => ['Impressions', 'Clicks', 'Cost', 'AverageCpc', 'AveragePosition', 'Date'],
         },
-        :report_name => 'Last 7 days ADGROUP_PERFORMANCE_REPORT',
-        :report_type => 'ADGROUP_PERFORMANCE_REPORT',
+        :report_name => 'Last 14 days ACCOUNT_PERFORMANCE_REPORT',
+        :report_type => 'ACCOUNT_PERFORMANCE_REPORT',
         :download_format => 'XML',
-        :date_range_type => 'LAST_7_DAYS',
+        :date_range_type => 'LAST_14_DAYS',
       }
 
       # Optional: Set the configuration of the API instance to suppress header,
