@@ -3,28 +3,44 @@ class DashboardController < ApplicationController
 def dashboard
         @adwords_data = download_criteria_report()
             data_hash = Hash.from_xml(@adwords_data)
-            print JSON.pretty_generate(JSON.parse(data_hash.to_json))
+            data_json = JSON.parse(data_hash.to_json)
+
+	            impressions = []
+				clicks = []
+				cost = []
+				dates = []
+
+				p data_json["report"]["table"]["row"]
+
+				data_json["report"]["table"]["row"].each do |object|
+					# object["impressions"]
+				    impressions.push(object["impressions"])
+				    clicks.push(object["clicks"])
+				    cost.push(object["cost"])
+				    dates.push(object["day"])
+				  end
+				  
 
 			 @data = {
-              labels: ["January", "February", "March", "April", "May", "June", "July"],
+			  labels: dates,
               datasets: [
                 {
                     label: "Impressions",
                     backgroundColor: "rgba(220,220,220,0.2)",
                     borderColor: "rgba(220,220,220,1)",
-                    data: [65, 59, 80, 81, 56, 55, 40]
+                    data: impressions
                 },
                 {
                     label: "Clicks",
                     backgroundColor: "rgba(151,187,205,0.2)",
                     borderColor: "rgba(151,187,205,1)",
-                    data: [28, 48, 40, 19, 86, 27, 90]
+                    data: clicks
                 },
                 { 
                     label: "Cost",
                     backgroundColor: "rgba(151,187,205,0.2)",
                     borderColor: "rgba(151,187,205,1)",
-                    data: [20, 20, 40, 20, 20, 20, 90]
+                    data: impressions
                 }
               ]
             } 

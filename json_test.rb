@@ -102,9 +102,30 @@ adwords_report = {"report": {
     }
   }
 }
-puts adwords_report[:report]
+
+impressions = []
+clicks = []
+cost = []
+dates = []
+
+adwords_report[:report][:table][:row].each do |x|
+    
+
+    impressions.push(x[:impressions])
+    clicks.push(x[:clicks])
+    cost.push(x[:cost])
+    dates.push(x[:day])
+  end
+
+puts impressions
+puts clicks
+puts cost
+puts dates
 
 
+dates.each do | day |
+          "#{day},"
+        end
 
 
 
