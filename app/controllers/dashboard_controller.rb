@@ -25,7 +25,7 @@ def dashboard
 				  cost2 = cost.map do |cost|
 					new_cost = cost.to_i
 					decimal_cost = new_cost/1000000
-					decimal_cost.to_f
+					p decimal_cost.to_f
 				end
 
 
@@ -42,7 +42,7 @@ def dashboard
                     label: "Cost",
                     backgroundColor: "rgba(151,187,205,0.2)",
                     borderColor: "rgba(151,187,205,1)",
-                    data: cost
+                    data: cost2
                 }
               ]
             } 
