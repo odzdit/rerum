@@ -1,14 +1,15 @@
 class DashboardController < ApplicationController
+require './lib/services/dashboard_lib.rb'
 
 def dashboard
         @adwords_data = download_criteria_report()
             data_hash = Hash.from_xml(@adwords_data)
             data_json = JSON.parse(data_hash.to_json)["report"]["table"]["row"]
 
-	            impressions = []
-				clicks = []
-				cost = []
-				dates = []
+          impressions = []
+    			clicks = []
+    			cost = []
+    			dates = []
 
 				data_json.sort_by! do |item|
 					item["day"]
@@ -22,12 +23,7 @@ def dashboard
 				    dates.push(object["day"])
 				  end
 				  
-				  cost2 = cost.map do |cost|
-					new_cost = cost.to_i
-					decimal_cost = new_cost/1000000
-					p decimal_cost.to_f
-				end
-
+				  cost2 = currency_converter(cost)
 
 			 @data = {
 			  labels: dates,

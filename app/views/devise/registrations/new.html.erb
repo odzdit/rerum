@@ -5,12 +5,17 @@
 
     <div class="field">
     <%= f.label :name %><br />
-    <%= f.email_field :name, autofocus: true %>
+    <%= f.text_field :name, autofocus: true %>
     </div>
 
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :adwords_id %><br />
+    <%= f.text_field :adwords_id %>
   </div>
 
   <div class="field">

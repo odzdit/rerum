@@ -1,4 +1,8 @@
-<h1 class="dash-title">Hello Welcome to Your Dashboard:</h1>
+<% if user_signed_in? %>
+  <h1 class="dash-title">Hello <%= current_user.name %> Welcome to Your Dashboard:</h1>
+ <% else %>
+  <h1 class="dash-title">Nobody Logged In</h1>
+ <% end %>
 	<div class="row">
 	    <%= line_chart  @data, @options %>
 	</div>
