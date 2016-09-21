@@ -1,15 +1,19 @@
 class DashboardController < ApplicationController
-require './lib/services/dashboard_lib.rb'
+require 'adwords_api'
+before_action :authenticate_user!
+
 
 def dashboard
+        @adwords_id = current_user.adwords_id
+        p @adwords_id
         @adwords_data = download_criteria_report()
             data_hash = Hash.from_xml(@adwords_data)
             data_json = JSON.parse(data_hash.to_json)["report"]["table"]["row"]
 
-          impressions = []
-    			clicks = []
-    			cost = []
-    			dates = []
+	            impressions = []
+				clicks = []
+				cost = []
+				dates = []
 
 				data_json.sort_by! do |item|
 					item["day"]
@@ -23,7 +27,12 @@ def dashboard
 				    dates.push(object["day"])
 				  end
 				  
-				  cost2 = currency_converter(cost)
+				  cost2 = cost.map do |cost|
+					new_cost = cost.to_i
+					decimal_cost = new_cost/1000000
+					p decimal_cost.to_f
+				end
+
 
 			 @data = {
 			  labels: dates,
@@ -50,8 +59,23 @@ private
     def download_criteria_report()
       # AdwordsApi::Api will read a config file from ENV['HOME']/adwords_api.yml
       # when called without parameters.
-      adwords = AdwordsApi::Api.new
+      # adwords = AdwordsApi::Api.new
 
+      adwords = AdwordsApi::Api.new({
+        :authentication => {
+           oauth2_client_id: ENV['adwords_oauth2_client_id'],
+             oauth2_client_secret: ENV['adwords_oauth2_client_secret'],
+             developer_token: ENV['adwords_developer_token'],
+             client_customer_id: ENV['adwords_client_customer_id'],
+               
+        },
+        :service => {
+          :environment => 'PRODUCTION'
+        }
+      })
+
+      credentials = adwords.credential_handler
+      credentials.set_credential(:oauth2_token, ENV['adwords_oauth2_access_token'])
       # To enable logging of SOAP requests, set the log_level value to 'DEBUG' in
       # the configuration file or provide your own logger:
       # adwords.logger = Logger.new('adwords_xml.log')
@@ -85,29 +109,7 @@ private
     end
 
     if __FILE__ == $0
-      API_VERSION = :v201607
-
-      begin
-        # File name to write report to.
-        file_name = 'Adgroup Report'
-        download_criteria_report(file_name)
-
-      # Authorization error.
-      rescue AdsCommon::Errors::OAuth2VerificationRequired => e
-        puts "Authorization credentials are not valid. Edit adwords_api.yml for " +
-            "OAuth2 client ID and secret and run misc/setup_oauth2.rb example " +
-            "to retrieve and store OAuth2 tokens."
-        puts "See this wiki page for more details:\n\n  " +
-            'https://github.com/googleads/google-api-ads-ruby/wiki/OAuth2'
-
-      # HTTP errors.
-      rescue AdsCommon::Errors::HttpError => e
-        puts "HTTP Error: %s" % e
-
-      # API errors.
-      rescue AdwordsApi::Errors::ReportError => e
-        puts "Reporting Error: %s" % e.message
-      end
+      A
 
     end
 end
