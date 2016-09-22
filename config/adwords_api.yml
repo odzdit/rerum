@@ -7,8 +7,8 @@
   :client_customer_id: ENV['adwords_client_customer_id']
   :user_agent: "rerum"
   :oauth2_token:
-    :access_token: ENV['adwords_oauth2_access_token']
-    :refresh_token: ya29.Ci9XA6O_v94Nb6KYuEmkfgCmtR57CX3_QZ4k-Ulqa0memKiUS8qfRwIU1aY-49fhzA
+    :access_token: ya29.CjBmAzbmuC-fOgwFEB1lxqig2xfzWW3x2wPZxzbm9hVgRuN4LVwN2d-2W36sz87WP_Y
+    :refresh_token: 1/98EYWfewnV_zkDEE4zBaBtmH5mGy12Vxm7fUIeURLxc
     :issued_at: 2016-09-06 20:26:19.967783000 -04:00
     :expires_in: 3600
     :id_token: 
