@@ -60,22 +60,25 @@ private
       # AdwordsApi::Api will read a config file from ENV['HOME']/adwords_api.yml
       # when called without parameters.
       # adwords = AdwordsApi::Api.new
-
-      adwords = AdwordsApi::Api.new({
-        :authentication => {
-           oauth2_client_id: ENV['adwords_oauth2_client_id'],
-             oauth2_client_secret: ENV['adwords_oauth2_client_secret'],
-             developer_token: ENV['adwords_developer_token'],
-             client_customer_id: ENV['adwords_client_customer_id'],
-               
-        },
-        :service => {
-          :environment => 'PRODUCTION'
-        }
-      })
-
-      credentials = adwords.credential_handler
-      credentials.set_credential(:oauth2_token, ENV['adwords_oauth2_access_token'])
+          adwords = AdwordsApi::Api.new({
+          :authentication => {
+            :method => 'OAuth2',
+            :oauth2_client_id => ENV['adwords_oauth2_client_id'],
+            :oauth2_client_secret => ENV['adwords_oauth2_client_secret'],
+            :developer_token => ENV['adwords_developer_token'],
+            :client_customer_id => "451-846-4440",
+            :user_agent => 'rerum',
+            :oauth_2token => {
+               :access_token => ENV['adwords_oauth2_access_token'],
+               :refresh_token => "ya29.Ci9XA6O_v94Nb6KYuEmkfgCmtR57CX3_QZ4k-Ulqa0memKiUS8qfRwIU1aY-49fhzA"
+            }
+          },
+          :service => {
+            :environment => 'PRODUCTION'
+          }
+        })
+  
+  
       # To enable logging of SOAP requests, set the log_level value to 'DEBUG' in
       # the configuration file or provide your own logger:
       # adwords.logger = Logger.new('adwords_xml.log')
