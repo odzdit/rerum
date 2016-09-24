@@ -35,7 +35,10 @@ def download_criteria_report(file_name)
   # Define report definition. You can also pass your own XML text as a string.
   report_definition = {
     :selector => {
-       :fields => ['Impressions', 'Clicks', 'Cost', 'AverageCpc', 'AveragePosition', 'Date'],
+       :fields => ['CampaignName','Impressions', 'Clicks', 'Cost', 'AverageCpc', 'AveragePosition', 'Date', 'Conversions'],
+       :predicates => [
+      {:field => 'CampaignName', :operator => 'CONTAINS', :values => "_"}
+    ]
         },
     :report_name => 'Last 7 days ADGROUP_PERFORMANCE_REPORT',
     :report_type => 'ADGROUP_PERFORMANCE_REPORT',
@@ -46,9 +49,9 @@ def download_criteria_report(file_name)
   # Optional: Set the configuration of the API instance to suppress header,
   # column name, or summary rows in the report output. You can also configure
   # this in your adwords_api.yml configuration file.
-  adwords.skip_report_header = false
+  adwords.skip_report_header = true
   adwords.skip_column_header = false
-  adwords.skip_report_summary = false
+  adwords.skip_report_summary = true
   # Enable to allow rows with zero impressions to show.
   adwords.include_zero_impressions = false
 

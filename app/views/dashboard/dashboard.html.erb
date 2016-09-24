@@ -1,11 +1,53 @@
 <% if user_signed_in? %>
   <h1 class="dash-title">Hello <%= current_user.name %> Welcome to Your Dashboard:</h1>
+  <h5 class="dash-title">SEM Report</h5>
+  <h6 class="dash-title">Last 7 days</h6>
  <% else %>
   <h1 class="dash-title">Nobody Logged In</h1>
  <% end %>
-	<div class="row">
-	    <%= line_chart  @data, @options %>
+	<div class="row" id="graph-container">
+    <div id="graph">
+  	    <%= line_chart  @data, @options %>
+    </div>
+    <!-- 1st row of KPIs -->
 	</div>
+  <div class="row text-center">
+    <div class="col-sm-3">
+        <h5 class="kpi">clicks</h5>
+        <p class= "kpi-number"><strong><%= @clicks %></strong></p> 
+    </div>
+    <div class="col-sm-3">
+        <h5 class="kpi">impressions</h5>
+        <p class= "kpi-number"><strong><%= @impressions %></strong></p>  
+    </div>
+    <div class="col-sm-3">
+        <h5 class="kpi">ctr</h5>
+        <p class= "kpi-number">%<strong><%= @ctr %></strong></p> 
+    </div>
+    <div class="col-sm-3">
+        <h5 class="kpi">cpc</h5>
+        <p class= "kpi-number">$<strong><%= @cpc  %></strong></p> 
+    </div>
+  </div>
+    <!-- 2nd row of KPIs -->
+    <div class="row text-center">
+    <div class="col-sm-3">
+          <h5 class="kpi">cost</h5>
+          <p class= "kpi-number">$<strong><%= @cost %></strong></p> 
+      </div>
+      <div class="col-sm-3">
+          <h5 class="kpi">cpa</h5>
+          <p class= "kpi-number">$<strong><%= @cpa %></strong></p>  
+      </div>
+      <div class="col-sm-3">
+          <h5 class="kpi">conversions</h5>
+          <p class= "kpi-number"><strong><%= @conversions  %></strong></p> 
+      </div>
+      <div class="col-sm-3">
+          <h5 class="kpi">conv. rate</h5>
+          <p class= "kpi-number"><strong><%= @conv_rate  %></strong></p> 
+      </div>
+    </div>
 <hr>
 <h2 class="dash-title"> Recommendations for this week's data: </h2>
 <table class="table recommendation table-bordered">
