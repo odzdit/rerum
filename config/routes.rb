@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
 root to: 'static_pages#home'
 get '/dashboard' => 'dashboard#dashboard'
+get '/yearly-report' => 'dashboard#yearly_report'
+get '/monthly-report' => 'dashboard#monthly_report'
 get "login/prompt"
 
 
