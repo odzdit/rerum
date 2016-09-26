@@ -8,7 +8,8 @@ def dashboard
     @adwords_data = download_criteria_report()
         data_hash = Hash.from_xml(@adwords_data)
         data_json = JSON.parse(data_hash.to_json)["report"]["table"]["row"]
-    
+        
+    campaigns = []
     dates = []
     impressions = []
 		clicks = []
@@ -26,7 +27,12 @@ def dashboard
 		    clicks.push(object["clicks"])
 		    cost.push(object["cost"])
 		    dates.push(object["day"])
+        campaigns.push(object["campaign"])
 		  end
+
+      @campaigns = Campaign.new(campaigns).clean_campaign
+      p @campaigns
+      
 
     @impressions = DashboardKpi.new(impressions).reduce_array
     @clicks = DashboardKpi.new(clicks).reduce_array
