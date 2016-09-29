@@ -1,5 +1,7 @@
+require 'awesome_print'
 class DashboardController < ApplicationController
 require 'adwords_api'
+
 
 before_action :authenticate_user!
 
@@ -8,7 +10,27 @@ def dashboard
     @adwords_data = download_criteria_report()
         data_hash = Hash.from_xml(@adwords_data)
         data_json = JSON.parse(data_hash.to_json)["report"]["table"]["row"]
-        
+      
+      days = data_json.group_by{ |object| object['day'] }
+      days_data_array = {}
+
+      days.each do |day|
+        days_data_array[day[0]] = {
+          clicks: 0,
+          impressions: 0,
+          cost: 0,
+          conversions:0
+        }
+        day[1].each do |day_data_point|
+          days_data_array[day[0]] = {
+            clicks: days_data_array[day[0]][:clicks] + day_data_point['clicks'].to_i,
+            impressions: days_data_array[day[0]][:impressions] + day_data_point['impressions'].to_i,
+            cost: days_data_array[day[0]][:cost] + day_data_point['cost'].to_i,
+            conversions:days_data_array[day[0]][:conversions] + day_data_point['conversions'].to_i
+          }
+        end
+      end
+
     campaigns = []
     dates = []
     impressions = []
@@ -20,35 +42,22 @@ def dashboard
 			item["day"]
 		end
 
-		data_json.each do |object|
-			# object["impressions"]
-        conversions.push(object["conversions"])
-		    impressions.push(object["impressions"])
-		    clicks.push(object["clicks"])
-		    cost.push(object["cost"])
-		    dates.push(object["day"])
-        campaigns.push(object["campaign"])
-		  end
+		# data_json.each do |object|
+		# 	# object["impressions"]
+    #     conversions.push(object["conversions"])
+		#     impressions.push(object["impressions"])
+		#     clicks.push(object["clicks"])
+		#     cost.push(object["cost"])
+		#     dates.push(object["day"])
+    #     campaigns.push(object["campaign"])
+		#   end
 
-      @campaigns = Campaign.new(campaigns).clean_campaign
-      p @campaigns
+    #   @campaigns = Campaign.new(campaigns).clean_campaign
       
+   @dashboard_kpi = DashboardKpi.new(days_data_array).package
+   print @dashboard_kpi
 
-    @impressions = DashboardKpi.new(impressions).reduce_array
-    @clicks = DashboardKpi.new(clicks).reduce_array
-    @cost = DashboardKpi.new(cost).reduce_array/100000
-    @conversions = DashboardKpi.new(conversions).reduce_array
-    @ctr = ((@clicks.to_f)/(@impressions.to_f)).round(4) * 100
-    @cpc = @cost/@clicks
-    @cpa = @cost/@conversions rescue 0
-    @conv_rate = @clicks/@conversions rescue 0
-    
-		  cost2 = cost.map do |cost|
-			new_cost = cost.to_i
-			decimal_cost = new_cost/1000000
-		end
-
-   weekly_graph = Graph.new(dates,conversions, cost2)
+   weekly_graph = Graph.new(@dashboard_kpi[:days], @dashboard_kpi[:conversions_array], @dashboard_kpi[:cost_array])
    @data = weekly_graph.make_graph_data
    @options = weekly_graph.options
              
