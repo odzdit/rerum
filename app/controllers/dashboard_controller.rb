@@ -12,8 +12,18 @@ def dashboard
 			item["day"]
 		end
 
+      campaigns = data_json.group_by{ 
+        |object| object['campaign']
+      }
+            
+     campaigns.each do | name |
+       new_name = name[0].dup
+       name[0] = Campaign.new(new_name).clean_campaign
+       p name[0]
+       end
 
-      campaigns = data_json.group_by{ |object| object['campaign'] }
+       ap campaigns.keys[0]
+
       campaigns_data_array = {}
 
       campaigns.each_with_index do |campaign, index|
@@ -21,8 +31,6 @@ def dashboard
         campaigns_data_array[name] = {}
 
         campaign[1].each do | campaign_data_point |
-            # puts campaigns_data_array[name]
-            # puts "#{campaign_data_point['day']}"
 
               campaigns_data_array[name]["#{campaign_data_point['day']}"] = {
                 clicks: campaign_data_point['clicks'].to_i,
@@ -31,9 +39,10 @@ def dashboard
                 conversions: campaign_data_point['conversions'].to_i
               } 
           end
+
         end
 
-        ap campaigns_data_array
+        # ap campaigns_data_array
 
 
       days = data_json.group_by{ |object| object['day'] }
@@ -51,19 +60,12 @@ def dashboard
             clicks: days_data_array[day[0]][:clicks] + day_data_point['clicks'].to_i,
             impressions: days_data_array[day[0]][:impressions] + day_data_point['impressions'].to_i,
             cost: days_data_array[day[0]][:cost] + day_data_point['cost'].to_i,
-            conversions:days_data_array[day[0]][:conversions] + day_data_point['conversions'].to_i
+            conversions:days_data_array[day[0]][:conversions] + day_data_point['conversions'].to_i,          
           }
         end
       end
-
-    campaigns = []
-    dates = []
-    impressions = []
-		clicks = []
-		cost = []
-    conversions = []
-
-  
+    
+    
   #  @campaigns = Campaign.new(campaigns).clean_campaign
       
    @dashboard_kpi = DashboardKpi.new(days_data_array).package
@@ -72,8 +74,6 @@ def dashboard
    weekly_graph = Graph.new(@dashboard_kpi[:days], @dashboard_kpi[:conversions_array], @dashboard_kpi[:cost_array])
    @data = weekly_graph.make_graph_data
    @options = weekly_graph.options
-
-   
              
   end
 

@@ -29,7 +29,7 @@ class DashboardKpi
 
 
 		end
-		@package[:cost] = @package[:cost] / 100000
+		@package[:cost] = @package[:cost] / 1000000
 
 		@package[:ctr] = @package[:clicks] / @package[:impressions]
 		@package[:cpc] = @package[:cost] / @package[:clicks]
