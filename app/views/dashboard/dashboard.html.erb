@@ -22,38 +22,38 @@
   <div class="row text-center">
     <div class="col-sm-3">
         <text class="kpi lead">clicks</text>
-        <p class= "kpi-number"><strong><%= @clicks %></strong></p> 
+        <p class= "kpi-number"><strong><%= @dashboard_kpi[:clicks] %></strong></p> 
     </div>
     <div class="col-sm-3">
         <text class="kpi lead">impressions</text>
-        <p class= "kpi-number"><strong><%= @impressions %></strong></p>  
+        <p class= "kpi-number"><strong><%= @dashboard_kpi[:impressions] %></strong></p>  
     </div>
     <div class="col-sm-3">
         <text class="kpi lead">ctr</text>
-        <p class= "kpi-number">%<strong><%= @ctr %></strong></p> 
+        <p class= "kpi-number">%<strong><%= @dashboard_kpi[:ctr] %></strong></p> 
     </div>
     <div class="col-sm-3">
         <text class="kpi lead">cpc</text>
-        <p class= "kpi-number">$<strong><%= @cpc  %></strong></p> 
+        <p class= "kpi-number">$<strong><%= @dashboard_kpi[:cpc]  %></strong></p> 
     </div>
   </div>
     <!-- 2nd row of KPIs -->
     <div class="row text-center">
     <div class="col-sm-3">
           <text class="kpi lead">cost</text>
-          <p class= "kpi-number">$<strong><%= @cost %></strong></p> 
+          <p class= "kpi-number">$<strong><%= @dashboard_kpi[:cost] %></strong></p> 
       </div>
       <div class="col-sm-3">
           <text class="kpi lead">cpa</text>
-          <p class= "kpi-number">$<strong><%= @cpa %></strong></p>  
+          <p class= "kpi-number">$<strong><%= @dashboard_kpi[:cpa] %></strong></p>  
       </div>
       <div class="col-sm-3">
           <text class="kpi lead">conversions</text>
-          <p class= "kpi-number"><strong><%= @conversions  %></strong></p> 
+          <p class= "kpi-number"><strong><%= @dashboard_kpi[:conversions]  %></strong></p> 
       </div>
       <div class="col-sm-3">
           <text class="kpi lead">conv. rate</text>
-          <p class= "kpi-number"><strong><%= @conv_rate  %></strong></p> 
+          <p class= "kpi-number"><strong><%= @dashboard_kpi[:conv_rate]  %></strong></p> 
       </div>
     </div>
 <hr>

@@ -14,7 +14,7 @@ class DashboardKpi
 			:conversions_array => [],
 			:impressions_array => [],
 			:cost_array => []
-		}
+		} 
 		@data.each do |data_point|
 			@package[:clicks] += data_point[1][:clicks].to_i
 			@package[:impressions] += data_point[1][:impressions].to_i
@@ -25,7 +25,7 @@ class DashboardKpi
 			@package[:clicks_array].concat([data_point[1][:clicks].to_i])
 			@package[:impressions_array].concat([data_point[1][:impressions].to_i])
 			@package[:conversions_array].concat([data_point[1][:conversions].to_i])
-			@package[:cost_array].concat([data_point[1][:cost].to_i])
+			@package[:cost_array].concat([data_point[1][:cost].to_i/1000000])
 
 
 		end
