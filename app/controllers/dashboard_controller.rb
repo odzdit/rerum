@@ -13,22 +13,15 @@ def dashboard
 		end
 
       campaigns = data_json.group_by{ 
-        |object| object['campaign']
+        |object| Campaign.new(object['campaign']).clean_campaign
       }
-            
-     campaigns.each do | name |
-       new_name = name[0].dup
-       name[0] = Campaign.new(new_name).clean_campaign
-       p name[0]
-       end
-
-       ap campaigns.keys[0]
-
+      
+      # ap campaigns
       campaigns_data_array = {}
 
       campaigns.each_with_index do |campaign, index|
         name = campaign[0]
-        campaigns_data_array[name] = {}
+      campaigns_data_array[name] = {}
 
         campaign[1].each do | campaign_data_point |
 
@@ -39,11 +32,11 @@ def dashboard
                 conversions: campaign_data_point['conversions'].to_i
               } 
           end
-
         end
 
-        # ap campaigns_data_array
-
+        campaigns.each do |key,value|
+          ap value[0]["clicks"]
+          end
 
       days = data_json.group_by{ |object| object['day'] }
       days_data_array = {}
@@ -64,12 +57,8 @@ def dashboard
           }
         end
       end
-    
-    
-  #  @campaigns = Campaign.new(campaigns).clean_campaign
-      
+
    @dashboard_kpi = DashboardKpi.new(days_data_array).package
-  #  print @dashboard_kpi
 
    weekly_graph = Graph.new(@dashboard_kpi[:days], @dashboard_kpi[:conversions_array], @dashboard_kpi[:cost_array])
    @data = weekly_graph.make_graph_data

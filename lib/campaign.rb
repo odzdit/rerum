@@ -4,8 +4,8 @@ class Campaign
         end 
 
         def clean_campaign
-                @campaign.sub! 'G|BR_', ''
-                @campaign.sub! 'G|NB_', ''
-                @campaign.sub! '-ES@MX', ''
+                @campaign = @campaign.sub 'G|BR_', ''
+                @campaign = @campaign = @campaign.sub 'G|NB_', ''
+                @campaign = @campaign.sub '-ES@MX', ''
         end
 end 

@@ -30,9 +30,8 @@ class DashboardKpi
 
 		end
 		@package[:cost] = @package[:cost] / 1000000
-
-		@package[:ctr] = @package[:clicks] / @package[:impressions]
-		@package[:cpc] = @package[:cost] / @package[:clicks]
+		@package[:ctr] = ((@package[:clicks].to_f / @package[:impressions].to_f).round(3)) * 100
+		@package[:cpc] = @package[:cost] / @package[:clicks] rescue 0
 		@package[:cpa] = @package[:cost] / @package[:conversions] rescue 0
 		@package[:conv_rate]  = @package[:conversions] / @package[:clicks] rescue 0
 		return @package
