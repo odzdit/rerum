@@ -1,22 +1,3 @@
-array = {"Competencia"=>[{"day"=>"2016-09-24", "campaign"=>"G|NB_Competencia-ES@MX", "impressions"=>"4", "clicks"=>"0", "cost"=>"0", "conversions"=>"0.0"}, {"day"=>"2016-09-25", "campaign"=>"G|NB_Competencia-ES@MX", "impressions"=>"7", "clicks"=>"1", "cost"=>"11120000", "conversions"=>"0.0"}, {"day"=>"2016-09-26", "campaign"=>"G|NB_Competencia-ES@MX", "impressions"=>"4", "clicks"=>"0", "cost"=>"0", "conversions"=>"0.0"}, {"day"=>"2016-09-27", "campaign"=>"G|NB_Competencia-ES@MX", "impressions"=>"15", "clicks"=>"2", "cost"=>"12630000", "conversions"=>"0.0"}, {"day"=>"2016-09-28", "campaign"=>"G|NB_Competencia-ES@MX", "impressions"=>"11", "clicks"=>"3", "cost"=>"36370000", "conversions"=>"0.0"}, {"day"=>"2016-09-29", "campaign"=>"G|NB_Competencia-ES@MX", "impressions"=>"2", "clicks"=>"0", "cost"=>"0", "conversions"=>"0.0"}, {"day"=>"2016-09-30", "campaign"=>"G|NB_Competencia-ES@MX", "impressions"=>"5", "clicks"=>"2", "cost"=>"17490000", "conversions"=>"0.0"}], "Pupilentes"=>[{"day"=>"2016-09-24", "campaign"=>"G|NB_Pupilentes-ES@MX", "impressions"=>"31", "clicks"=>"1", "cost"=>"8410000", "conversions"=>"0.0"}, {"day"=>"2016-09-25", "campaign"=>"G|NB_Pupilentes-ES@MX", "impressions"=>"106", "clicks"=>"11", "cost"=>"119670000", "conversions"=>"0.0"}, {"day"=>"2016-09-26", "campaign"=>"G|NB_Pupilentes-ES@MX", "impressions"=>"75", "clicks"=>"5", "cost"=>"64260000", "conversions"=>"0.0"}, {"day"=>"2016-09-27", "campaign"=>"G|NB_Pupilentes-ES@MX", "impressions"=>"69", "clicks"=>"3", "cost"=>"40450000", "conversions"=>"0.0"}, {"day"=>"2016-09-28", "campaign"=>"G|NB_Pupilentes-ES@MX", "impressions"=>"69", "clicks"=>"4", "cost"=>"66190000", "conversions"=>"0.0"}, {"day"=>"2016-09-29", "campaign"=>"G|NB_Pupilentes-ES@MX", "impressions"=>"80", "clicks"=>"5", "cost"=>"72000000", "conversions"=>"0.0"}, {"day"=>"2016-09-30", "campaign"=>"G|NB_Pupilentes-ES@MX", "impressions"=>"71", "clicks"=>"1", "cost"=>"9170000", "conversions"=>"0.0"}], "Brand"=>[{"day"=>"2016-09-24", "campaign"=>"G|BR_Brand-ES@MX", "impressions"=>"7", "clicks"=>"2", "cost"=>"14030000", "conversions"=>"0.0"}, {"day"=>"2016-09-25", "campaign"=>"G|BR_Brand-ES@MX", "impressions"=>"6", "clicks"=>"1", "cost"=>"19850000", "conversions"=>"0.0"}, {"day"=>"2016-09-26", "campaign"=>"G|BR_Brand-ES@MX", "impressions"=>"7", "clicks"=>"2", "cost"=>"7660000", "conversions"=>"0.0"}, {"day"=>"2016-09-27", "campaign"=>"G|BR_Brand-ES@MX", "impressions"=>"10", "clicks"=>"1", "cost"=>"16470000", "conversions"=>"0.0"}, {"day"=>"2016-09-28", "campaign"=>"G|BR_Brand-ES@MX", "impressions"=>"24", "clicks"=>"10", "cost"=>"27280000", "conversions"=>"0.0"}, {"day"=>"2016-09-29", "campaign"=>"G|BR_Brand-ES@MX", "impressions"=>"1", "clicks"=>"0", "cost"=>"0", "conversions"=>"0.0"}, {"day"=>"2016-09-30", "campaign"=>"G|BR_Brand-ES@MX", "impressions"=>"5", "clicks"=>"1", "cost"=>"2920000", "conversions"=>"0.0"}], "Lentes de Contacto"=>[{"day"=>"2016-09-24", "campaign"=>"G|NB_Lentes de Contacto-ES@MX", "impressions"=>"121", "clicks"=>"2", "cost"=>"34760000", "conversions"=>"0.0"}, {"day"=>"2016-09-25", "campaign"=>"G|NB_Lentes de Contacto-ES@MX", "impressions"=>"36", "clicks"=>"2", "cost"=>"32000000", "conversions"=>"0.0"}, {"day"=>"2016-09-26", "campaign"=>"G|NB_Lentes de Contacto-ES@MX", "impressions"=>"46", "clicks"=>"2", "cost"=>"31140000", "conversions"=>"0.0"}, {"day"=>"2016-09-27", "campaign"=>"G|NB_Lentes de Contacto-ES@MX", "impressions"=>"188", "clicks"=>"3", "cost"=>"35820000", "conversions"=>"0.0"}, {"day"=>"2016-09-28", "campaign"=>"G|NB_Lentes de Contacto-ES@MX", "impressions"=>"290", "clicks"=>"8", "cost"=>"195340000", "conversions"=>"1.0"}, {"day"=>"2016-09-29", "campaign"=>"G|NB_Lentes de Contacto-ES@MX", "impressions"=>"385", "clicks"=>"9", "cost"=>"192540000", "conversions"=>"2.0"}, {"day"=>"2016-09-30", "campaign"=>"G|NB_Lentes de Contacto-ES@MX", "impressions"=>"422", "clicks"=>"12", "cost"=>"232910000", "conversions"=>"1.0"}], "Problemas de Vista"=>[{"day"=>"2016-09-30", "campaign"=>"G|NB_Problemas de Vista-ES@MX", "impressions"=>"3", "clicks"=>"0", "cost"=>"0", "conversions"=>"0.0"}], "Examen de la vista"=>[{"day"=>"2016-09-30", "campaign"=>"G|NB_Examen de la vista-ES@MX", "impressions"=>"61", "clicks"=>"0", "cost"=>"0", "conversions"=>"0.0"}]} 
-
-
-days_data_array = {}
- array.each do |day|
-        days_data_array[day[0]] = {
-          clicks: 0,
-          impressions: 0,
-          cost: 0,
-          conversions:0
-        }
-        day[1].each do |day_data_point|
-          days_data_array[day[0]] = {
-            clicks: days_data_array[day[0]][:clicks] + day_data_point['clicks'].to_i,
-            impressions: days_data_array[day[0]][:impressions] + day_data_point['impressions'].to_i,
-            cost: days_data_array[day[0]][:cost] + day_data_point['cost'].to_i,
-            conversions:days_data_array[day[0]][:conversions] + day_data_point['conversions'].to_i,          
-          }
-        end
-      end
-
-      p array
+0.upto(7) do |number|
+  puts number * 10
+  end 
