@@ -5,9 +5,9 @@
 .banner {
 	padding-left: 10%;
 	padding-right: 10%;
-	background-image: image-url("iStock_83222663_MEDIUM.jpg");
+	background-image: image-url("iStock_73847783_Medium.jpg");
 	background-color: lightblue;
-	height: 600px;
+	height: 500px;
 	background-size: 100%;
 	opacity:100%; 
 }
@@ -41,6 +41,11 @@ h6 {
 .navbar {
 	margin: 0;
 }
+.navbar-logo {
+	max-width: 100px;
+	max-height: 30px;
+}
+
 
 .square {
 	background-color: black;
@@ -111,3 +116,24 @@ li {
  	width:70%; 
     margin-left:15%; 
     margin-right:15%;}
+
+.circle {
+height: 60px;
+width: 60px;
+line-height: 60px;
+border-radius: 50px;
+display:inline-block;
+background-color: black;
+color: white;
+text-align: center;
+font-size: 2em;
+}
+
+.usp {
+	color:black;
+	position: relative;
+	font-weight: bold;
+	font-size:16px;
+	right:60px;
+	top:15px;
+}

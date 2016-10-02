@@ -44,9 +44,9 @@ def dashboard
         
         # ap campaigns_data_array
 
-        # campaigns_data_array.each do |key,value|
-        #   p value["impressions_array"]
-        #   end
+        campaigns_data_array.each do |key,value|
+          p value["impressions_array"]
+          end
 
       days = data_json.group_by{ |object| object['day'] }
       days_data_array = {}
