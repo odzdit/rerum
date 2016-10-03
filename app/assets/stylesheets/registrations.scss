@@ -1,3 +1,26 @@
 // Place all the styles related to the registrations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.banner-login {
+	padding-left: 10%;
+	padding-right: 10%;
+	background-image: image-url("sign_up2.jpg");
+	background-color: lightblue;
+	height: 1000px;
+	background-size: 100%;
+	opacity:100%;
+    text-shadow: 2px 2px #39393B; 
+}
+
+.usp-head-1{
+	color: white;
+	font-weight: bold;
+	position:relative;
+    text-shadow: 3px 3px #39393B;
+	top:10%;
+	right:15%;
+}
+
+.login-text{
+    color: white;
+}
