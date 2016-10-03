@@ -30,7 +30,7 @@ h3 {
 }
 h5 {
 	text-align: center;
-	color:white;
+	color:white; 
 }
 
 h6 {
@@ -46,12 +46,21 @@ h6 {
 	// right:33%;
 }
 
+.usp-head-about{
+	color: #39393B;
+	font-weight: bold;
+	position:relative;
+	text-align: left;
+	padding-left:10%;
+	padding-top:3%;
+	padding-bottom:3%;
+}
 .button-banner {
 	vertical-align: center;
 	color:white;
 	position:absolute;
 	left:44%;
-	top:72%;
+	top:45%;
 }
 
 .navbar {
@@ -152,4 +161,17 @@ font-size: 2em;
 	font-size:16px;
 	right:60px;
 	top:15px;
+}
+
+.team{
+	height:300px;
+	background-color: #F5F7F9;
+}
+
+.headshot{
+	max-width: 400px;
+	max-height: 300px;
+    border-radius: 250px;
+
+
 }
