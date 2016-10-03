@@ -1,11 +1,28 @@
 // Place all the styles related to the login controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.banner {
+.banner-login {
 	padding-left: 10%;
 	padding-right: 10%;
-	background-color: 39393B;
-	height: 500px;
+	background-color: #39393B;
+	height: 1000px;
 	background-size: 100%;
 	opacity:100%; 
+}
+.usp-head-login{
+	color: white;
+	font-weight: bold;
+	position:relative;
+    text-shadow: 3px 3px #39393B;
+	right:35%;
+	top:10%;
+}
+
+.login-text{
+    color: white;
+}
+
+.image-login{
+	max-width: 300px;
+	max-height: 200px;
 }

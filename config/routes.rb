@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { registrations: 'registrations' }
 root to: 'static_pages#home'
+get '/about-us' => 'static_pages#about_us'
 get '/dashboard' => 'dashboard#dashboard'
 get '/dashboard-test' => 'dashboard#dashboard_test'
 get '/yearly-report' => 'dashboard#yearly_report'

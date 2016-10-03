@@ -21,5 +21,7 @@ class StaticPagesController < ApplicationController
         @options = {}
     end
 	
+    def about_us
+    end
 
 end
