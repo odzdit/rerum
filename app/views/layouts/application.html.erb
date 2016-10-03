@@ -36,7 +36,7 @@
         
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">About Us</a></li>  
+        <li><a href="/about-us">About Us</a></li>  
         <li><%= button_to "Request a Demo", new_user_registration_path, :method => :get,  :class => "btn btn-primary navbar-btn" %></li>
         <li><%= button_to "Sign In", new_user_session_path, :class => "btn btn-success navbar-btn" %></li>
       <% if user_signed_in? %>

@@ -7,9 +7,9 @@
 		<span class="glyphicon glyphicon-filter circle js-glyphicon-filter"></span>
 			<p class="usp">Filtered actionable Results</p>
 	</div>
-	<!-- SONG MODAL -->
+	<!-- DASHBOARD WEEKLY MODAL -->
 		<div class="modal fade js-glyphicon-filter-modal">
-		  <div class="modal-dialog">
+		  <div class="modal-dialog modal-lg">
 		    <div class="modal-content">
 
 		      <div class="modal-header">
@@ -18,22 +18,68 @@
 		          <span>&times;</span>
 		        </button>
 
-		        <h2 class="js-song-modal-title"></h2>
+		        <h2 class="js-song-modal-title usp-head-1">Visual Insights on your campaigns</h2>
 		      </div>
 
 		      <div class="js-modal-song-body row">
-				<div class="col-sm-9">
-					<%= line_chart @data, @options %>
-				</div>
+						<%= line_chart @data, @options %>
+						</br>
+						</br>
 		      </div>
-
+						 <div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary">Request a Demo</button>
+						</div>
 		    </div><!-- /.modal-content -->
 		  </div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
 	<div class="col-sm-3 left">
-		<span class="glyphicon glyphicon-tasks circle"></span>
+		<span class="glyphicon glyphicon-tasks circle js-glyphicon-table"></span>
 			<p class="usp">Quick follow up actions</p>
 	</div>
+	<!-- TABLE WEEKLY MODAL -->
+		<div class="modal fade js-glyphicon-table-modal">
+		  <div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+
+		      <div class="modal-header">
+		        <!-- Close button -->
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span>&times;</span>
+		        </button>
+
+		        <h2 class="js-song-modal-title usp-head-1">Visual Insights on your campaigns</h2>
+		      </div>
+
+		      <div class="js-modal-song-body row">
+					</br>
+							<table class="table recommendation table-bordered">
+								<tr>
+									<th>Main Takeaway</th>
+									<th>Recommendation</th> 
+									<th>Ease of Implementation</th>
+								</tr>
+								<tr>
+									<td>Jill</td>
+									<td>Smith</td> 
+									<td>50</td>
+								</tr>
+								<tr>
+									<td>Eve</td>
+									<td>Jackson</td> 
+									<td>94</td>
+								</tr>
+							</table>
+						</br>
+						</br>
+		      </div>
+						 <div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary">Request a Demo</button>
+						</div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 	<div class="col-sm-3 left">		
 		<span class="glyphicon glyphicon-signal circle"></span>
 			<p class="usp">Insightful data at glance</p>

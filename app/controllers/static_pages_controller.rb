@@ -5,20 +5,43 @@ class StaticPagesController < ApplicationController
         labels: ["January", "February", "March", "April", "May", "June", "July"],
         datasets: [
             {
-                label: "My First dataset",
+                label: "Shirts",
                 backgroundColor: "rgba(220,220,220,0.2)",
-                borderColor: "rgba(220,220,220,1)",
-                data: [65, 59, 80, 81, 56, 55, 40]
+                borderColor: "rgba(220,230,225,1)",
+                data: [28, 20, 70, 60, 86, 27, 90]
             },
             {
-                label: "My Second dataset",
+                label: "Shoes",
                 backgroundColor: "rgba(151,187,205,0.2)",
                 borderColor: "rgba(151,187,205,1)",
-                data: [28, 48, 40, 19, 86, 27, 90]
-            }
+                data: [10, 20, 30, 35, 35, 27, 90]
+            },
+             {
+                label: "Hats",
+                backgroundColor: "rgba(220,220,220,0.2)",
+                borderColor: "rgba(220,260,200,1)",
+                data: [80, 48, 30, 25, 75, 30, 20]
+
+             },
+              {
+                label: "Sunglasses",
+                backgroundColor: "rgba(220,220,220,0.2)",
+                borderColor: "rgba(100,330,220,1)",
+                data: [30, 50, 42, 55, 60, 69, 100]
+              }
+            
         ]
         }
-        @options = {}
+        @options = {
+          :width => 1000,
+         :height => 500,
+         :scales => {
+              :yAxes => [
+                {:type => "linear", :id => "y-axis-1", :display => true, :position => "right"},
+                {:type => "linear", :id => "y-axis-2", :display => true, :position => "left"}
+           ]
+         }
+       } 
     end
 	
     def about_us
