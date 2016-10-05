@@ -11,6 +11,11 @@
 	background-size: 100%;
 	opacity:100%; 
 }
+.banner > div{
+	position:relative;
+	top:83%;
+
+}
 // titles
 .dash-title {
 	color: black;
@@ -39,8 +44,7 @@ h6 {
 	color: #39393B;
 	font-weight: bold;
 	position:relative;
-	// top:30%;
-	// right:33%;
+
 }
 
 .usp-head-about{
@@ -51,13 +55,6 @@ h6 {
 	padding-left:10%;
 	padding-top:3%;
 	padding-bottom:3%;
-}
-.button-banner {
-	vertical-align: center;
-	color:white;
-	position:absolute;
-	left:44%;
-	top:45%;
 }
 
 .navbar {
