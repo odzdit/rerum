@@ -33,7 +33,7 @@ class DashboardKpi
 		@package[:ctr] = ((@package[:clicks].to_f / @package[:impressions].to_f).round(2)) * 100
 		@package[:cpc] = @package[:cost] / @package[:clicks] rescue 0
 		@package[:cpa] = @package[:cost] / @package[:conversions] rescue 0
-		@package[:conv_rate]  = @package[:conversions] / @package[:clicks] rescue 0
+		@package[:conv_rate]  = (((@package[:conversions] / @package[:clicks].to_f).round(2)) * 100) rescue 0
 		return @package
 	end
 

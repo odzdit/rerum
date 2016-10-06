@@ -64,7 +64,7 @@ def dashboard
 
    @dashboard_kpi = DashboardKpi.new(days_data_array).package
    weekly_graph = Graph.new(@dashboard_kpi[:days], campaigns_data_array)
-   @data = weekly_graph.make_graph_cost
+   @data = weekly_graph.make_graph_clicks
    @options = weekly_graph.options
              
   end
@@ -111,6 +111,138 @@ end
 def yearly_report
    
 end
+
+    def weekly_dashboard_impressions
+        @adwords_data = download_criteria_report()
+            data_hash = Hash.from_xml(@adwords_data)
+            data_json = JSON.parse(data_hash.to_json)["report"]["table"]["row"]
+          
+          data_json.sort_by! do |item|
+          item["day"]
+        end
+
+          campaigns = data_json.group_by{ 
+            |object| Campaign.new(object['campaign']).clean_campaign
+          }
+                # ap campaigns
+          campaigns_data_array = {}
+          
+          campaigns.each_with_index do |campaign, index|
+          name = campaign[0]
+          campaigns_data_array[name] = {}
+            campaigns_data_array[name]["clicks_array"] = []         
+            campaigns_data_array[name]["cost_array"] = []         
+            campaigns_data_array[name]["conversions_array"] = []         
+            campaigns_data_array[name]["impressions_array"] = []
+            
+            campaign[1].each do |campaign_data_point|
+
+                  campaigns_data_array[name]["#{campaign_data_point['day']}"] = {
+                    clicks: campaign_data_point['clicks'].to_i,
+                    impressions: campaign_data_point['impressions'].to_i,
+                    cost: campaign_data_point['cost'].to_i,
+                    conversions: campaign_data_point['conversions'].to_i,
+                  }  
+                
+                campaigns_data_array[name]["impressions_array"].push campaigns_data_array[name]["#{campaign_data_point['day']}"][:impressions]
+                campaigns_data_array[name]["conversions_array"].push campaigns_data_array[name]["#{campaign_data_point['day']}"][:conversions]
+                campaigns_data_array[name]["clicks_array"].push campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks]
+                campaigns_data_array[name]["cost_array"].push campaigns_data_array[name]["#{campaign_data_point['day']}"][:cost] / 100000
+              end
+            end
+
+          days = data_json.group_by{ |object| object['day'] }
+          days_data_array = {}
+
+          days.each do |day|
+            days_data_array[day[0]] = {
+              clicks: 0,
+              impressions: 0,
+              cost: 0,
+              conversions:0
+            }
+            day[1].each do |day_data_point|
+              days_data_array[day[0]] = {
+                clicks: days_data_array[day[0]][:clicks] + day_data_point['clicks'].to_i,
+                impressions: days_data_array[day[0]][:impressions] + day_data_point['impressions'].to_i,
+                cost: days_data_array[day[0]][:cost] + day_data_point['cost'].to_i,
+                conversions:days_data_array[day[0]][:conversions] + day_data_point['conversions'].to_i,          
+              }
+            end
+          end
+
+      @dashboard_kpi = DashboardKpi.new(days_data_array).package
+      weekly_graph = Graph.new(@dashboard_kpi[:days], campaigns_data_array)
+      @data = weekly_graph.make_graph_impressions
+      @options = weekly_graph.options
+    end
+
+
+    def weekly_dashboard_cost
+        @adwords_data = download_criteria_report()
+            data_hash = Hash.from_xml(@adwords_data)
+            data_json = JSON.parse(data_hash.to_json)["report"]["table"]["row"]
+          
+          data_json.sort_by! do |item|
+          item["day"]
+        end
+
+          campaigns = data_json.group_by{ 
+            |object| Campaign.new(object['campaign']).clean_campaign
+          }
+                # ap campaigns
+          campaigns_data_array = {}
+          
+          campaigns.each_with_index do |campaign, index|
+          name = campaign[0]
+          campaigns_data_array[name] = {}
+            campaigns_data_array[name]["clicks_array"] = []         
+            campaigns_data_array[name]["cost_array"] = []         
+            campaigns_data_array[name]["conversions_array"] = []         
+            campaigns_data_array[name]["impressions_array"] = []
+            
+            campaign[1].each do |campaign_data_point|
+
+                  campaigns_data_array[name]["#{campaign_data_point['day']}"] = {
+                    clicks: campaign_data_point['clicks'].to_i,
+                    impressions: campaign_data_point['impressions'].to_i,
+                    cost: campaign_data_point['cost'].to_i,
+                    conversions: campaign_data_point['conversions'].to_i,
+                  }  
+                
+                campaigns_data_array[name]["impressions_array"].push campaigns_data_array[name]["#{campaign_data_point['day']}"][:impressions]
+                campaigns_data_array[name]["conversions_array"].push campaigns_data_array[name]["#{campaign_data_point['day']}"][:conversions]
+                campaigns_data_array[name]["clicks_array"].push campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks]
+                campaigns_data_array[name]["cost_array"].push campaigns_data_array[name]["#{campaign_data_point['day']}"][:cost] / 100000
+              end
+            end
+
+          days = data_json.group_by{ |object| object['day'] }
+          days_data_array = {}
+
+          days.each do |day|
+            days_data_array[day[0]] = {
+              clicks: 0,
+              impressions: 0,
+              cost: 0,
+              conversions:0
+            }
+            day[1].each do |day_data_point|
+              days_data_array[day[0]] = {
+                clicks: days_data_array[day[0]][:clicks] + day_data_point['clicks'].to_i,
+                impressions: days_data_array[day[0]][:impressions] + day_data_point['impressions'].to_i,
+                cost: days_data_array[day[0]][:cost] + day_data_point['cost'].to_i,
+                conversions:days_data_array[day[0]][:conversions] + day_data_point['conversions'].to_i,          
+              }
+            end
+          end
+
+      @dashboard_kpi = DashboardKpi.new(days_data_array).package
+      weekly_graph = Graph.new(@dashboard_kpi[:days], campaigns_data_array)
+      @data = weekly_graph.make_graph_cost
+      @options = weekly_graph.options
+    end
+
 
 private
 
