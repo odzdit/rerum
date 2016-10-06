@@ -13,6 +13,7 @@ get '/monthly-report' => 'dashboard#monthly_report'
 get '/weekly-dashboard-impressions' => 'dashboard#weekly_dashboard_impressions'
 get '/weekly-dashboard-cost' => 'dashboard#weekly_dashboard_cost'
 get '/weekly-dashboard-conversions' => 'dashboard#weekly_dashboard_conversions'
+get '/weekly-dashboard-ctr' => 'dashboard#weekly_dashboard_ctr'
 
 
 get "login/prompt"
