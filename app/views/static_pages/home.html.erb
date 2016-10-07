@@ -20,12 +20,17 @@
 		          <span>&times;</span>
 		        </button>
 
-		        <h2 class="js-song-modal-title usp-head-1">Visual Insights on your campaigns</h2>
+		        <h2 class="js-song-modal-title usp-head-1">Obtain Visual Insights on your campaigns</h2>
 		      </div>
 
 		      <div class="js-modal-song-body row">
-						<%= line_chart @data, @options %>
-						</br>
+						<%= line_chart @data, @options %>					
+								<h3 class="usp-head-modal">With Rerum:</h3>
+									<ul>
+										<li><p class="lead">See your business categories clearly visibile upon login</p></li>
+										<li><p class="lead">Filter your results by Category</p></li>
+										<li><p class="lead">Select and analyze the KPI that is most valuable for your business</p></li>
+									</ul>
 						</br>
 		      </div>
 						 <div class="modal-footer">
@@ -50,26 +55,31 @@
 		          <span>&times;</span>
 		        </button>
 
-		        <h2 class="js-song-modal-title usp-head-1">Visual Insights on your campaigns</h2>
+		        <h2 class="js-song-modal-title usp-head-1">Get recommendations based on your industry</h2>
 		      </div>
 
 		      <div class="js-modal-song-body row">
 					</br>
 							<table class="table recommendation table-bordered">
 								<tr>
-									<th>Main Takeaway</th>
-									<th>Recommendation</th> 
-									<th>Ease of Implementation</th>
+									<th class="text-center">Main Takeaway</th>
+									<th class="text-center">Recommendation</th> 
+									<th class="text-center">Ease of Implementation</th>
 								</tr>
 								<tr>
-									<td>Jill</td>
-									<td>Smith</td> 
-									<td>50</td>
+									<td>Avg. CPC has been increasing greatly in the last few days</td>
+									<td>Perhaps Competitors are bidding more aggresively</td> 
+									<td class="easy">Easy</td>
 								</tr>
 								<tr>
-									<td>Eve</td>
-									<td>Jackson</td> 
-									<td>94</td>
+									<td>Campaign "Shoes" Conversions has increased significantly in the last few days</td>
+									<td>Opportunity to increase CPC's for top converting Keywords</td> 
+									<td class="medium">Medium</td>
+								</tr>
+								<tr>
+									<td>Overall CTR has decreased significantly</td>
+									<td>Perform Search Query Reports</td> 
+									<td class="hard">Hard</td>
 								</tr>
 							</table>
 						</br>
@@ -83,13 +93,109 @@
 		  </div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
 	<div class="col-sm-3 left">		
-		<span class="glyphicon glyphicon-signal circle"></span>
+		<span class="glyphicon glyphicon-signal circle js-glyphicon-circle"></span>
 			<p class="usp">Insightful data at glance</p>
+			<!-- TABLE WEEKLY MODAL -->
+		<div class="modal fade js-glyphicon-circle-modal">
+		  <div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+
+		      <div class="modal-header">
+		        <!-- Close button -->
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span>&times;</span>
+		        </button>
+
+		        <h2 class="js-song-modal-title usp-head-1">Get recommendations based on your industry</h2>
+		      </div>
+
+		      <div class="js-modal-song-body row">
+					</br>
+							<table class="table recommendation table-bordered">
+								<tr>
+									<th class="text-center">Main Takeaway</th>
+									<th class="text-center">Recommendation</th> 
+									<th class="text-center">Ease of Implementation</th>
+								</tr>
+								<tr>
+									<td>Avg. CPC has been increasing greatly in the last few days</td>
+									<td>Perhaps Competitors are bidding more aggresively</td> 
+									<td class="easy">Easy</td>
+								</tr>
+								<tr>
+									<td>Campaign "Shoes" Conversions has increased significantly in the last few days</td>
+									<td>Opportunity to increase CPC's for top converting Keywords</td> 
+									<td class="medium">Medium</td>
+								</tr>
+								<tr>
+									<td>Overall CTR has decreased significantly</td>
+									<td>Perform Search Query Reports</td> 
+									<td class="hard">Hard</td>
+								</tr>
+							</table>
+						</br>
+						</br>
+		      </div>
+						 <div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary">Request a Demo</button>
+						</div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 	</div>		
 	<div class="col-sm-3 left">		
-		<span class="glyphicon glyphicon-time circle"></span>
+		<span class="glyphicon glyphicon-time circle js-glyphicon-time"></span>
 			<p class="usp">Investment Where Matters</p>
 	</div>
+	<!-- TABLE WEEKLY MODAL -->
+		<div class="modal fade js-glyphicon-time-modal">
+		  <div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+
+		      <div class="modal-header">
+		        <!-- Close button -->
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span>&times;</span>
+		        </button>
+
+		        <h2 class="js-song-modal-title usp-head-1">Get recommendations based on your industry</h2>
+		      </div>
+
+		      <div class="js-modal-song-body row">
+					</br>
+							<table class="table recommendation table-bordered">
+								<tr>
+									<th class="text-center">Main Takeaway</th>
+									<th class="text-center">Recommendation</th> 
+									<th class="text-center">Ease of Implementation</th>
+								</tr>
+								<tr>
+									<td>Avg. CPC has been increasing greatly in the last few days</td>
+									<td>Perhaps Competitors are bidding more aggresively</td> 
+									<td class="easy">Easy</td>
+								</tr>
+								<tr>
+									<td>Campaign "Shoes" Conversions has increased significantly in the last few days</td>
+									<td>Opportunity to increase CPC's for top converting Keywords</td> 
+									<td class="medium">Medium</td>
+								</tr>
+								<tr>
+									<td>Overall CTR has decreased significantly</td>
+									<td>Perform Search Query Reports</td> 
+									<td class="hard">Hard</td>
+								</tr>
+							</table>
+						</br>
+						</br>
+		      </div>
+						 <div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary">Request a Demo</button>
+						</div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 </div>
 </div>	
 <hr>

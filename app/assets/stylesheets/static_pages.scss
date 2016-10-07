@@ -44,7 +44,6 @@ h6 {
 	color: #39393B;
 	font-weight: bold;
 	position:relative;
-
 }
 
 .usp-head-about{
@@ -174,4 +173,25 @@ font-size: 2em;
 
 .graph{
 	text-align: center;
+}
+
+.usp-head-modal{
+	color: #39393B;
+	font-weight: bold;
+	position:relative;
+	left:5%;
+}
+
+.medium{
+	background-color:orange;
+}
+
+.easy{
+	background-color:seagreen;
+	fill-opacity: 0.8;
+}
+
+.hard{
+	background-color:#DF2832 ;
+	fill-opacity: 0.8;
 }
