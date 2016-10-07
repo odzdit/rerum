@@ -14,6 +14,9 @@ get '/weekly-dashboard-impressions' => 'dashboard#weekly_dashboard_impressions'
 get '/weekly-dashboard-cost' => 'dashboard#weekly_dashboard_cost'
 get '/weekly-dashboard-conversions' => 'dashboard#weekly_dashboard_conversions'
 get '/weekly-dashboard-ctr' => 'dashboard#weekly_dashboard_ctr'
+get '/weekly-dashboard-conversion-rate' => 'dashboard#weekly_dashboard_conversion_rate'
+get '/weekly-dashboard-cpa' => 'dashboard#weekly_dashboard_cpa'
+get '/weekly-dashboard-cpc' => 'dashboard#weekly_dashboard_cpc'
 
 
 get "login/prompt"

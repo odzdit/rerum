@@ -1,0 +1,94 @@
+<% if user_signed_in? %>
+  <h1 class="dash-title">Hello <%= current_user.name %> Welcome to Your Dashboard:</h1>
+ <% else %>
+  <h1 class="dash-title">Nobody Logged In</h1>
+ <% end %>
+	<div class="row" id="graph-container">
+    <div id="graph">
+  	    <%= line_chart  @data, @options %>            
+    </div>
+    <div class="row text-center">    
+        <strong>Clicks <%= check_box_tag 'Clicks', 'yes', false, class: 'clicks lead js-clicks' %></strong>
+        <strong>Impressions <%= check_box_tag 'Impressions', 'yes', false, class: 'Impressions lead js-impressions' %></strong>
+        <strong>Avg. CPC <%= check_box_tag 'Avg. CPC', 'yes', false, class: 'Avg. CPC lead js-cpc' %></strong>
+        <strong>Cost <%= check_box_tag 'Cost', 'yes', false, class: 'Cost lead js-cost' %></strong>
+        <strong>CTR <%= check_box_tag 'CTR', 'yes', false, class: 'CTR lead js-ctr' %></strong>
+        <strong>Conversions <%= check_box_tag 'Conversions', 'yes', false, class: 'Conversions lead js-conversions' %></strong>
+        <strong>Conversion Rate <%= check_box_tag 'Conversion Rate', 'yes', false, class: 'Conversion Rate lead js-conversion-rate' %></strong>
+        <strong>CPA <%= check_box_tag 'CPA', 'yes', false, class: 'CPA lead js-cpa' %></strong>
+    </div>
+    <!-- 1st row of KPIs -->
+	</div>
+  <div class="row text-center">
+    <div class="col-sm-3">
+        <text class="kpi lead">clicks</text>
+        <p class= "kpi-number"><strong><%= @dashboard_kpi[:clicks] %></strong></p> 
+    </div>
+    <div class="col-sm-3">
+        <text class="kpi lead">impressions</text>
+        <p class= "kpi-number"><strong><%= @dashboard_kpi[:impressions] %></strong></p>  
+    </div>
+    <div class="col-sm-3">
+        <text class="kpi lead">ctr</text>
+        <p class= "kpi-number"><strong>%<%= @dashboard_kpi[:ctr] %></strong></p> 
+    </div>
+    <div class="col-sm-3">
+        <text class="kpi lead">cpc</text>
+        <p class= "kpi-number"><strong>$<%= @dashboard_kpi[:cpc]  %></strong></p> 
+    </div>
+  </div>
+    <!-- 2nd row of KPIs -->
+    <div class="row text-center">
+    <div class="col-sm-3">
+          <text class="kpi lead">cost</text>
+          <p class= "kpi-number">$<strong><%= @dashboard_kpi[:cost] %></strong></p> 
+      </div>
+      <div class="col-sm-3">
+          <text class="kpi lead">cpa</text>
+          <p class= "kpi-number"><strong>$<%= @dashboard_kpi[:cpa] %></strong></p>  
+      </div>
+      <div class="col-sm-3">
+          <text class="kpi lead">conversions</text>
+          <p class= "kpi-number"><strong><%= @dashboard_kpi[:conversions]  %></strong></p> 
+      </div>
+      <div class="col-sm-3">
+          <text class="kpi lead">conv. rate</text>
+          <p class= "kpi-number"><strong>%<%= @dashboard_kpi[:conv_rate]  %></strong></p> 
+      </div>
+    </div>
+<hr>
+<h2 class="dash-title"> Recommendations for this week's data: </h2>
+<table class="table recommendation table-bordered">
+  <tr>
+    <th>Main Takeaway</th>
+    <th>Recommendation</th> 
+    <th>Ease of Implementation</th>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td> 
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td> 
+    <td>94</td>
+  </tr>
+</table>
+
+<h2 class="dash-title">View Other Reports:</h2>
+<div class-"row">
+    <div class="col-sm-6 div-container">
+    <h5 class="dash-title"> Monthly SEM Report</h5>
+        <%= link_to image_tag("chart-1.jpg", :class => "image-chart"), monthly_report_path %>
+       </div>
+    <div class="col-sm-6 div-container">
+    <h5 class="dash-title"> Yearly SEM Report</h5>
+        <%= link_to image_tag("chart-2.jpg", :class => "image-chart"), yearly_report_path %>
+     </div>
+</div>
+	<div class="row">
+	    <div class="col-sm-12 text-center text-bottom footer">
+	        All Rights Reserved Rerum 2016
+	    </div>
+	</div>  

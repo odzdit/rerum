@@ -25,7 +25,7 @@ $(document).ready(function(){
 	})
 
     $(".js-conversion-rate").on("click", function(){
-        window.location.href ="/weekly-dashboard-conv-rate"
+        window.location.href ="/weekly-dashboard-conversion-rate"
 	})
 
     $(".js-cpa").on("click", function(){
