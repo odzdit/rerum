@@ -36,7 +36,5 @@ class DashboardKpi
 		@package[:conv_rate]  = (((@package[:conversions] / @package[:clicks].to_f).round(2)) * 100) rescue 0
 		return @package
 	end
-
-
 end
 

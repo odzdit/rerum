@@ -15,7 +15,7 @@ def dashboard
       campaigns = data_json.group_by{ 
         |object| Campaign.new(object['campaign']).clean_campaign
       }
-            # ap campaigns
+
       campaigns_data_array = {}
       
       campaigns.each_with_index do |campaign, index|
@@ -93,11 +93,14 @@ def dashboard
         end
       end
 
-      ap days_data_array
    @dashboard_kpi = DashboardKpi.new(days_data_array).package
+   @recommendation = Recommendation.new(@dashboard_kpi[:cost]).compare_cost
+
    weekly_graph = Graph.new(@dashboard_kpi[:days], campaigns_data_array)
    @data = weekly_graph.make_graph_clicks
    @options = weekly_graph.options
+
+
              
   end
 
