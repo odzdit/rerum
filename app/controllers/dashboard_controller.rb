@@ -1,4 +1,3 @@
-require 'awesome_print'
 class DashboardController < ApplicationController
 require 'adwords_api'
 before_action :authenticate_user!
