@@ -94,7 +94,8 @@ def dashboard
       end
 
    @dashboard_kpi = DashboardKpi.new(days_data_array).package
-   @recommendation = Recommendation.new(@dashboard_kpi[:cost]).compare_cost
+   @cpa_recommendation = Recommendation.new(@dashboard_kpi[:cpa]).compare_cpa
+   @ctr_recommendation = Recommendation.new(@dashboard_kpi[:cpa]).compare_ctr
 
    weekly_graph = Graph.new(@dashboard_kpi[:days], campaigns_data_array)
    @data = weekly_graph.make_graph_clicks
@@ -121,12 +122,16 @@ def dashboard
           
           campaigns.each_with_index do |campaign, index|
           name = campaign[0]
-          campaigns_data_array[name] = {}
-            campaigns_data_array[name]["clicks_array"] = []         
-            campaigns_data_array[name]["cost_array"] = []         
-            campaigns_data_array[name]["conversions_array"] = []         
-            campaigns_data_array[name]["impressions_array"] = []
-            
+              campaigns_data_array[name] = {}
+                campaigns_data_array[name]["clicks_array"] = []         
+                campaigns_data_array[name]["cost_array"] = []         
+                campaigns_data_array[name]["conversions_array"] = []         
+                campaigns_data_array[name]["impressions_array"] = []
+                campaigns_data_array[name]["cpc_array"] = []
+                campaigns_data_array[name]["conversion_rate_array"] = []
+                campaigns_data_array[name]["cpa_array"] = []
+                campaigns_data_array[name]["ctr_array"] = []
+                
             campaign[1].each do |campaign_data_point|
 
                   campaigns_data_array[name]["#{campaign_data_point['day']}"] = {
@@ -140,8 +145,33 @@ def dashboard
                 campaigns_data_array[name]["conversions_array"].push campaigns_data_array[name]["#{campaign_data_point['day']}"][:conversions]
                 campaigns_data_array[name]["clicks_array"].push campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks]
                 campaigns_data_array[name]["cost_array"].push campaigns_data_array[name]["#{campaign_data_point['day']}"][:cost] / 100000
-              end
+
+                    # manual operations
+             if ((campaigns_data_array[name]["#{campaign_data_point['day']}"][:cost] / campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks]) rescue 0) == 0 
+              p campaigns_data_array[name]["cpc_array"].push 0 
+            else
+              campaigns_data_array[name]["cpc_array"].push ((campaigns_data_array[name]["#{campaign_data_point['day']}"][:cost] / campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks])) / 1000000 rescue 0
             end
+
+             if campaigns_data_array[name]["#{campaign_data_point['day']}"][:conversions] == 0
+              campaigns_data_array[name]["conversion_rate_array"].push 0
+             else
+              campaigns_data_array[name]["conversion_rate_array"].push campaigns_data_array[name]["#{campaign_data_point['day']}"][:conversions].to_f / campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks].to_f rescue 0
+            end
+          
+             if ((campaigns_data_array[name]["#{campaign_data_point['day']}"][:cost] / campaigns_data_array[name]["#{campaign_data_point['day']}"][:conversions]) rescue 0) == 0 
+              campaigns_data_array[name]["cpa_array"].push 0 
+            else
+              campaigns_data_array[name]["cpa_array"].push ((campaigns_data_array[name]["#{campaign_data_point['day']}"][:cost] / campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks])) / 1000000 rescue 0
+            end
+              
+             if ((campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks] / campaigns_data_array[name]["#{campaign_data_point['day']}"][:impressions]) rescue 0) == 0 
+              campaigns_data_array[name]["ctr_array"].push 0 
+            else
+              campaigns_data_array[name]["ctr_array"].push ((campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks] / campaigns_data_array[name]["#{campaign_data_point['day']}"][:impressions]) * 100) 
+            end
+          end
+        end
 
           days = data_json.group_by{ |object| object['day'] }
           days_data_array = {}
@@ -163,10 +193,15 @@ def dashboard
             end
           end
 
-      @dashboard_kpi = DashboardKpi.new(days_data_array).package
-      weekly_graph = Graph.new(@dashboard_kpi[:days], campaigns_data_array)
-      @data = weekly_graph.make_graph_impressions
-      @options = weekly_graph.options
+     
+   @dashboard_kpi = DashboardKpi.new(days_data_array).package
+   @cpa_recommendation = Recommendation.new(@dashboard_kpi[:cpa]).compare_cpa
+   @ctr_recommendation = Recommendation.new(@dashboard_kpi[:cpa]).compare_ctr
+
+   weekly_graph = Graph.new(@dashboard_kpi[:days], campaigns_data_array)
+   @data = weekly_graph.make_graph_impressions
+   @options = weekly_graph.options
+
     end
 
 
@@ -188,11 +223,15 @@ def dashboard
           campaigns.each_with_index do |campaign, index|
           name = campaign[0]
           campaigns_data_array[name] = {}
-            campaigns_data_array[name]["clicks_array"] = []         
-            campaigns_data_array[name]["cost_array"] = []         
-            campaigns_data_array[name]["conversions_array"] = []         
-            campaigns_data_array[name]["impressions_array"] = []
-            
+              campaigns_data_array[name]["clicks_array"] = []         
+              campaigns_data_array[name]["cost_array"] = []         
+              campaigns_data_array[name]["conversions_array"] = []         
+              campaigns_data_array[name]["impressions_array"] = []
+              campaigns_data_array[name]["cpc_array"] = []
+              campaigns_data_array[name]["conversion_rate_array"] = []
+              campaigns_data_array[name]["cpa_array"] = []
+              campaigns_data_array[name]["ctr_array"] = []
+          
             campaign[1].each do |campaign_data_point|
 
                   campaigns_data_array[name]["#{campaign_data_point['day']}"] = {
@@ -206,8 +245,32 @@ def dashboard
                 campaigns_data_array[name]["conversions_array"].push campaigns_data_array[name]["#{campaign_data_point['day']}"][:conversions]
                 campaigns_data_array[name]["clicks_array"].push campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks]
                 campaigns_data_array[name]["cost_array"].push campaigns_data_array[name]["#{campaign_data_point['day']}"][:cost] / 100000
-              end
+                    # manual operations
+             if ((campaigns_data_array[name]["#{campaign_data_point['day']}"][:cost] / campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks]) rescue 0) == 0 
+              p campaigns_data_array[name]["cpc_array"].push 0 
+            else
+              campaigns_data_array[name]["cpc_array"].push ((campaigns_data_array[name]["#{campaign_data_point['day']}"][:cost] / campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks])) / 1000000 rescue 0
             end
+
+             if campaigns_data_array[name]["#{campaign_data_point['day']}"][:conversions] == 0
+              campaigns_data_array[name]["conversion_rate_array"].push 0
+             else
+              campaigns_data_array[name]["conversion_rate_array"].push campaigns_data_array[name]["#{campaign_data_point['day']}"][:conversions].to_f / campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks].to_f rescue 0
+            end
+          
+             if ((campaigns_data_array[name]["#{campaign_data_point['day']}"][:cost] / campaigns_data_array[name]["#{campaign_data_point['day']}"][:conversions]) rescue 0) == 0 
+              campaigns_data_array[name]["cpa_array"].push 0 
+            else
+              campaigns_data_array[name]["cpa_array"].push ((campaigns_data_array[name]["#{campaign_data_point['day']}"][:cost] / campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks])) / 1000000 rescue 0
+            end
+              
+             if ((campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks] / campaigns_data_array[name]["#{campaign_data_point['day']}"][:impressions]) rescue 0) == 0 
+              campaigns_data_array[name]["ctr_array"].push 0 
+            else
+              campaigns_data_array[name]["ctr_array"].push ((campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks] / campaigns_data_array[name]["#{campaign_data_point['day']}"][:impressions]) * 100) 
+            end
+          end
+        end
 
           days = data_json.group_by{ |object| object['day'] }
           days_data_array = {}
@@ -229,10 +292,15 @@ def dashboard
             end
           end
 
-      @dashboard_kpi = DashboardKpi.new(days_data_array).package
-      weekly_graph = Graph.new(@dashboard_kpi[:days], campaigns_data_array)
-      @data = weekly_graph.make_graph_cost
-      @options = weekly_graph.options
+     
+   @dashboard_kpi = DashboardKpi.new(days_data_array).package
+   @cpa_recommendation = Recommendation.new(@dashboard_kpi[:cpa]).compare_cpa
+   @ctr_recommendation = Recommendation.new(@dashboard_kpi[:cpa]).compare_ctr
+
+   weekly_graph = Graph.new(@dashboard_kpi[:days], campaigns_data_array)
+   @data = weekly_graph.make_graph_cost
+   @options = weekly_graph.options
+
     end
 
 
@@ -258,6 +326,10 @@ def dashboard
               campaigns_data_array[name]["cost_array"] = []         
               campaigns_data_array[name]["conversions_array"] = []         
               campaigns_data_array[name]["impressions_array"] = []
+              campaigns_data_array[name]["cpc_array"] = []
+              campaigns_data_array[name]["conversion_rate_array"] = []
+              campaigns_data_array[name]["cpa_array"] = []
+              campaigns_data_array[name]["ctr_array"] = []
               
               campaign[1].each do |campaign_data_point|
 
@@ -272,8 +344,33 @@ def dashboard
                   campaigns_data_array[name]["conversions_array"].push campaigns_data_array[name]["#{campaign_data_point['day']}"][:conversions]
                   campaigns_data_array[name]["clicks_array"].push campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks]
                   campaigns_data_array[name]["cost_array"].push campaigns_data_array[name]["#{campaign_data_point['day']}"][:cost] / 100000
-                end
-              end
+
+                      # manual operations
+             if ((campaigns_data_array[name]["#{campaign_data_point['day']}"][:cost] / campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks]) rescue 0) == 0 
+              p campaigns_data_array[name]["cpc_array"].push 0 
+            else
+              campaigns_data_array[name]["cpc_array"].push ((campaigns_data_array[name]["#{campaign_data_point['day']}"][:cost] / campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks])) / 1000000 rescue 0
+            end
+
+             if campaigns_data_array[name]["#{campaign_data_point['day']}"][:conversions] == 0
+              campaigns_data_array[name]["conversion_rate_array"].push 0
+             else
+              campaigns_data_array[name]["conversion_rate_array"].push campaigns_data_array[name]["#{campaign_data_point['day']}"][:conversions].to_f / campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks].to_f rescue 0
+            end
+          
+             if ((campaigns_data_array[name]["#{campaign_data_point['day']}"][:cost] / campaigns_data_array[name]["#{campaign_data_point['day']}"][:conversions]) rescue 0) == 0 
+              campaigns_data_array[name]["cpa_array"].push 0 
+            else
+              campaigns_data_array[name]["cpa_array"].push ((campaigns_data_array[name]["#{campaign_data_point['day']}"][:cost] / campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks])) / 1000000 rescue 0
+            end
+              
+             if ((campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks] / campaigns_data_array[name]["#{campaign_data_point['day']}"][:impressions]) rescue 0) == 0 
+              campaigns_data_array[name]["ctr_array"].push 0 
+            else
+              campaigns_data_array[name]["ctr_array"].push ((campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks] / campaigns_data_array[name]["#{campaign_data_point['day']}"][:impressions]) * 100) 
+            end
+          end
+        end
 
             days = data_json.group_by{ |object| object['day'] }
             days_data_array = {}
@@ -295,10 +392,15 @@ def dashboard
               end
             end
 
-        @dashboard_kpi = DashboardKpi.new(days_data_array).package
-        weekly_graph = Graph.new(@dashboard_kpi[:days], campaigns_data_array)
-        @data = weekly_graph.make_graph_conversions
-        @options = weekly_graph.options
+       
+   @dashboard_kpi = DashboardKpi.new(days_data_array).package
+   @cpa_recommendation = Recommendation.new(@dashboard_kpi[:cpa]).compare_cpa
+   @ctr_recommendation = Recommendation.new(@dashboard_kpi[:cpa]).compare_ctr
+
+   weekly_graph = Graph.new(@dashboard_kpi[:days], campaigns_data_array)
+   @data = weekly_graph.make_graph_conversions
+   @options = weekly_graph.options
+
       end
 
       def weekly_dashboard_ctr
@@ -367,8 +469,6 @@ def dashboard
               campaigns_data_array[name]["ctr_array"].push ((campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks] / campaigns_data_array[name]["#{campaign_data_point['day']}"][:impressions]) * 100) 
             end
           end
-          # ap campaigns_data_array[name]["clicks_array"]
-          # ap campaigns_data_array[name]["cpc2_array"]
           
         end
              
@@ -393,12 +493,15 @@ def dashboard
           }
         end
       end
-
-      # ap days_data_array
+ 
    @dashboard_kpi = DashboardKpi.new(days_data_array).package
+   @cpa_recommendation = Recommendation.new(@dashboard_kpi[:cpa]).compare_cpa
+   @ctr_recommendation = Recommendation.new(@dashboard_kpi[:cpa]).compare_ctr
+
    weekly_graph = Graph.new(@dashboard_kpi[:days], campaigns_data_array)
    @data = weekly_graph.make_graph_ctr
    @options = weekly_graph.options
+
              
   end
 
@@ -468,10 +571,7 @@ def weekly_dashboard_conversion_rate
             else
               campaigns_data_array[name]["ctr_array"].push ((campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks] / campaigns_data_array[name]["#{campaign_data_point['day']}"][:impressions]) * 100) 
             end
-          end
-          # ap campaigns_data_array[name]["clicks_array"]
-          # ap campaigns_data_array[name]["cpc2_array"]
-          
+          end          
         end
              
 
@@ -496,11 +596,15 @@ def weekly_dashboard_conversion_rate
         end
       end
 
-      # ap days_data_array
+  
    @dashboard_kpi = DashboardKpi.new(days_data_array).package
+   @cpa_recommendation = Recommendation.new(@dashboard_kpi[:cpa]).compare_cpa
+   @ctr_recommendation = Recommendation.new(@dashboard_kpi[:cpa]).compare_ctr
+
    weekly_graph = Graph.new(@dashboard_kpi[:days], campaigns_data_array)
    @data = weekly_graph.make_graph_conv_rate
    @options = weekly_graph.options
+
              
   end
 
@@ -570,9 +674,6 @@ def weekly_dashboard_cpa
               campaigns_data_array[name]["ctr_array"].push ((campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks] / campaigns_data_array[name]["#{campaign_data_point['day']}"][:impressions]) * 100) 
             end
           end
-          # ap campaigns_data_array[name]["clicks_array"]
-          # ap campaigns_data_array[name]["cpc2_array"]
-          
         end
              
 
@@ -597,11 +698,15 @@ def weekly_dashboard_cpa
         end
       end
 
-      # ap days_data_array
+  
    @dashboard_kpi = DashboardKpi.new(days_data_array).package
+   @cpa_recommendation = Recommendation.new(@dashboard_kpi[:cpa]).compare_cpa
+   @ctr_recommendation = Recommendation.new(@dashboard_kpi[:cpa]).compare_ctr
+
    weekly_graph = Graph.new(@dashboard_kpi[:days], campaigns_data_array)
    @data = weekly_graph.make_graph_cpa
    @options = weekly_graph.options
+
              
   end
 
@@ -671,9 +776,6 @@ def weekly_dashboard_cpa
               campaigns_data_array[name]["ctr_array"].push ((campaigns_data_array[name]["#{campaign_data_point['day']}"][:clicks] / campaigns_data_array[name]["#{campaign_data_point['day']}"][:impressions]) * 100) 
             end
           end
-          # ap campaigns_data_array[name]["clicks_array"]
-          # ap campaigns_data_array[name]["cpc2_array"]
-          
         end
              
 
@@ -697,9 +799,10 @@ def weekly_dashboard_cpa
           }
         end
       end
+    @dashboard_kpi = DashboardKpi.new(days_data_array).package
+   @cpa_recommendation = Recommendation.new(@dashboard_kpi[:cpa]).compare_cpa
+   @ctr_recommendation = Recommendation.new(@dashboard_kpi[:cpa]).compare_ctr
 
-      # ap days_data_array
-   @dashboard_kpi = DashboardKpi.new(days_data_array).package
    weekly_graph = Graph.new(@dashboard_kpi[:days], campaigns_data_array)
    @data = weekly_graph.make_graph_cpc
    @options = weekly_graph.options
@@ -711,13 +814,13 @@ def dashboard_test
         labels: ["January", "February", "March", "April", "May", "June", "July"],
         datasets: [
             {
-                label: "My First dataset",
+                label: "Shoes",
                 backgroundColor: "rgba(220,220,220,0.2)",
                 borderColor: "rgba(220,220,220,1)",
                 data: [65, 59, 80, 81, 56, 55, 40]
             },
             {
-                label: "My Second dataset",
+                label: "Shirtst",
                 backgroundColor: "rgba(151,187,205,0.2)",
                 borderColor: "rgba(151,187,205,1)",
                 data: [28, 48, 40, 19, 86, 27, 90]
@@ -748,12 +851,6 @@ end
 def yearly_report
    
 end
-
-
-
-
-
-
 
 
 private

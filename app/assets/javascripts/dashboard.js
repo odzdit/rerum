@@ -32,6 +32,9 @@ $(document).ready(function(){
             window.location.href ="/weekly-dashboard-cpa"
         })
 
+    $("td:contains('Easy')").addClass("easy");
+    $("td:contains('Medium')").addClass("medium");
+    $("td:contains('Hard')").addClass("hard");
 
 
 	

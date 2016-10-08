@@ -1,5 +1,7 @@
 <% if user_signed_in? %>
-  <h1 class="dash-title">Hello <%= current_user.name %> Welcome to Your Dashboard:</h1>
+  <h1 class="dash-title">Hello <%= current_user.name %>, This is an example Dashboard:</h1>
+  <h3 class="dash-title">You've just gained easy insights on your data. We will contact you shortly</h3>
+  <h4 class="dash-title">Feel free to look around</h3>
  <% else %>
   <h1 class="dash-title">Nobody Logged In</h1>
  <% end %>
@@ -59,23 +61,28 @@
     </div>
 <hr>
 <h2 class="dash-title"> Recommendations for this week's data: </h2>
-<table class="table recommendation table-bordered">
-  <tr>
-    <th>Main Takeaway</th>
-    <th>Recommendation</th> 
-    <th>Ease of Implementation</th>
-  </tr>
-  <tr>
-    <td>Jill</td>
-    <td>Smith</td> 
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td> 
-    <td>94</td>
-  </tr>
-</table>
+	<table class="table recommendation table-bordered">
+        <tr>
+            <th class="text-center">Main Takeaway</th>
+            <th class="text-center">Recommendation</th> 
+            <th class="text-center">Ease of Implementation</th>
+        </tr>
+        <tr>
+            <td>Avg. CPC has been increasing greatly in the last few days</td>
+            <td>Perhaps Competitors are bidding more aggresively</td> 
+            <td class="easy">Easy</td>
+        </tr>
+        <tr>
+            <td>Campaign "Shoes" Conversions has increased significantly in the last few days</td>
+            <td>Opportunity to increase CPC's for top converting Keywords</td> 
+            <td class="medium">Medium</td>
+        </tr>
+        <tr>
+            <td>Overall CTR has decreased significantly</td>
+            <td>Perform Search Query Reports</td> 
+            <td class="hard">Hard</td>
+        </tr>
+    </table>
 
 <h2 class="dash-title">View Other Reports:</h2>
 <div class-"row">
@@ -84,24 +91,10 @@
         <%= link_to image_tag("chart-1.jpg", :class => "image-chart"), monthly_report_path %>
        </div>
     <div class="col-sm-6 div-container">
-    <h5 class="dash-title"> Yearly SEM Report</h5>
-        <%= link_to image_tag("chart-2.jpg", :class => "image-chart"), yearly_report_path %>
-     </div>
-</div>
-<div class-"row">
-    <div class="col-sm-6 div-container">
-    <h5 class="dash-title"> Category SEM Report</h5>
-        <%= image_tag("chart-3.jpg", :class => "image-chart") %>
-     </div>
-    <div class="col-sm-6 div-container">
-    <h5 class="dash-title"> Geographic SEM Report</h5>
-        <%= image_tag("chart-4.jpg", :class => "image-chart") %>
-     </div>
-
-</div>
-
-
-
+        <h5 class="dash-title"> Yearly SEM Report</h5>
+            <%= link_to image_tag("chart-2.jpg", :class => "image-chart"), yearly_report_path %>
+        </div>
+    </div>
 	<div class="row">
 	    <div class="col-sm-12 text-center text-bottom footer">
 	        All Rights Reserved Rerum 2016
