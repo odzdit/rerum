@@ -79,13 +79,17 @@
 
 <h2 class="dash-title">View Other Reports:</h2>
 <div class-"row">
-    <div class="col-sm-6 div-container">
+    <div class="col-sm-4 div-container">
     <h5 class="dash-title"> Monthly SEM Report</h5>
         <%= link_to image_tag("chart-1.jpg", :class => "image-chart"), monthly_report_path %>
        </div>
-    <div class="col-sm-6 div-container">
+    <div class="col-sm-4 div-container">
     <h5 class="dash-title"> Yearly SEM Report</h5>
         <%= link_to image_tag("chart-2.jpg", :class => "image-chart"), yearly_report_path %>
+     </div>
+     <div class="col-sm-4 div-container">
+    <h5 class="dash-title"> Geographic Report</h5>
+        <%= link_to image_tag("chart-3.jpg", :class => "image-chart"), dashboard_geo_path %>
      </div>
 </div>
 <div class="row">

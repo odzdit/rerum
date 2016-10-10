@@ -1,12 +1,12 @@
 <% if user_signed_in? %>
   <h1 class="dash-title">Hello <%= current_user.name %> Welcome to Your Dashboard:</h1>
-  <h3 class="dash-title">You're viewing Cost x Click</h3>
+<h3 class="dash-title">You're viewing Conversions by Geolocation</h3>
  <% else %>
   <h1 class="dash-title">Nobody Logged In</h1>
  <% end %>
 	<div class="row" id="graph-container">
-    <div id="graph">
-  	    <%= line_chart  @data, @options %>            
+    <div id="graph">                        
+          <%= pie_chart  @data, @options %>            
     </div>
     <div class="row text-center">    
         <strong>Clicks <%= check_box_tag 'Clicks', 'yes', false, class: 'clicks lead js-clicks' %></strong>

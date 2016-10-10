@@ -17,6 +17,7 @@ get '/weekly-dashboard-ctr' => 'dashboard#weekly_dashboard_ctr'
 get '/weekly-dashboard-conversion-rate' => 'dashboard#weekly_dashboard_conversion_rate'
 get '/weekly-dashboard-cpa' => 'dashboard#weekly_dashboard_cpa'
 get '/weekly-dashboard-cpc' => 'dashboard#weekly_dashboard_cpc'
+get '/dashboard-geo' => 'dashboard#dashboard_geographic'
 
 
 get "login/prompt"
