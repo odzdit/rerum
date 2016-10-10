@@ -5,7 +5,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-    <div class="login-text">
+    <div class="field login-text">
     <%= f.label :name %><br />
     <div class="form-text"><%= f.text_field :name, autofocus: true %></div>
     </div>

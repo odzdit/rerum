@@ -7,7 +7,7 @@
 <div class="row body">
 	<div class="col-sm-3 left">
 		<span class="glyphicon glyphicon-filter circle js-glyphicon-filter"></span>
-			<p class="usp">Filtered actionable Results</p>
+			<p class="usp">Filtered actionable results</p>
 	</div>
 	<!-- DASHBOARD WEEKLY MODAL -->
 		<div class="modal fade js-glyphicon-filter-modal">
@@ -26,10 +26,10 @@
 		      <div class="js-modal-song-body row">
 						<%= line_chart @data, @options %>					
 								<h3 class="usp-head-modal">With Rerum:</h3>
-									<ul>
-										<li><p class="lead">See your business categories clearly visibile upon login</p></li>
-										<li><p class="lead">Filter your results by Category</p></li>
-										<li><p class="lead">Select and analyze the KPI that is most valuable for your business</p></li>
+									<ul class="list">
+										<li><p>Your business categories clearly visibile upon login</p></li>
+										<li><p>Filter your results by category</p></li>
+										<li><p>Select and analyze the KPI that is most valuable</p></li>
 									</ul>
 						</br>
 		      </div>
@@ -55,7 +55,7 @@
 		          <span>&times;</span>
 		        </button>
 
-		        <h2 class="js-song-modal-title usp-head-1">Get recommendations based on your industry</h2>
+		        <h2 class="js-song-modal-title usp-head-1">Recommendations based on your industry and account history</h2>
 		      </div>
 
 		      <div class="js-modal-song-body row">
@@ -106,33 +106,11 @@
 		          <span>&times;</span>
 		        </button>
 
-		        <h2 class="js-song-modal-title usp-head-1">Get recommendations based on your industry</h2>
+		        <h2 class="js-song-modal-title usp-head-1">The most important info right since the begining</h2>
 		      </div>
-
-		      <div class="js-modal-song-body row">
+		      <div class="js-modal-song-body row text-center">
 					</br>
-							<table class="table recommendation table-bordered">
-								<tr>
-									<th class="text-center">Main Takeaway</th>
-									<th class="text-center">Recommendation</th> 
-									<th class="text-center">Ease of Implementation</th>
-								</tr>
-								<tr>
-									<td>Avg. CPC has been increasing greatly in the last few days</td>
-									<td>Perhaps Competitors are bidding more aggresively</td> 
-									<td class="easy">Easy</td>
-								</tr>
-								<tr>
-									<td>Campaign "Shoes" Conversions has increased significantly in the last few days</td>
-									<td>Opportunity to increase CPC's for top converting Keywords</td> 
-									<td class="medium">Medium</td>
-								</tr>
-								<tr>
-									<td>Overall CTR has decreased significantly</td>
-									<td>Perform Search Query Reports</td> 
-									<td class="hard">Hard</td>
-								</tr>
-							</table>
+						<%= image_tag("kpi-modal.png", :class => "kpi-modal")%>
 						</br>
 						</br>
 		      </div>
@@ -146,7 +124,7 @@
 	</div>		
 	<div class="col-sm-3 left">		
 		<span class="glyphicon glyphicon-time circle js-glyphicon-time"></span>
-			<p class="usp">Investment Where Matters</p>
+			<p class="usp">Investment where matters</p>
 	</div>
 	<!-- TABLE WEEKLY MODAL -->
 		<div class="modal fade js-glyphicon-time-modal">
@@ -226,9 +204,15 @@
 		</ul>
 	</div>	
 </div>
-<div class="row">
-	<div class="col-sm-12 text-center text-bottom footer">
-		All Rights Reserved Rerum 2016
-	</div>
-</div>	
-<div></div>	
+<div class="col-sm-12 text-center text-bottom footer">
+	<div>
+			<ul>
+				<li class="footer-link"><%= link_to "Home", root_path %></li> |   					
+				<li class="footer-link"><%= link_to "Request a Demo", new_user_registration_path %></li> |   					
+				<li class="footer-link"><%= link_to "Sign In", new_user_session_path %></li> |   					
+				<li class="footer-link"><%= link_to "About Us", about_us_path %></li> |   			
+			</ul>		
+			RERUM Data © Miami, FL USA
+	</div>							
+</div>
+	

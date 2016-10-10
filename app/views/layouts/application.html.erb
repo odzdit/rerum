@@ -31,12 +31,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">Our Mission</a></li>
-        <li><a href="#">How it Works</a></li>
+        <li><a href="/about-us">About Us</a></li> 
         
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/about-us">About Us</a></li> 
       <% if user_signed_in? %>
         <li><%= button_to "Dashboard", dashboard_path, :method => :get,  :class => "btn btn-warning navbar-btn" %></li>
         <li><%= button_to "Logout", destroy_user_session_path, :method => :delete, :class => "btn btn-danger navbar-btn" %></li>

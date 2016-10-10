@@ -7,7 +7,7 @@ class Graph
       def make_graph_clicks
         i = -1
         dataset_array = @graph_package.map do |key, value |
-                  colors = ["rgba(49,115,126,.8)", "rgba(245,185,69,.8)", "rgba(31,160,132,.8)", "rgba(47,186,157,.8)", "rgba(222,124,0,.8)", "rgba(49,136,253,.8)", "rgba(80,158,47,.8)"]
+                  colors = ["rgba(232,111,12,1)", "rgba(12,151,232,1)", "rgba(232,12,96,1)", "rgba(232,184,12,1)", "rgba(222,124,0,.8)", "rgba(0,0,0,.8)", "rgba(80,158,47,.8)"]
                   i += 1
                   {
                     label: key,
@@ -41,7 +41,7 @@ class Graph
       def make_graph_impressions
     i = -1
     dataset_array = @graph_package.map do |key, value |
-              colors = ["rgba(49,115,126,.8)", "rgba(245,185,69,.8)", "rgba(31,160,132,.8)", "rgba(47,186,157,.8)", "rgba(222,124,0,.8)", "rgba(49,136,253,.8)", "rgba(80,158,47,.8)"]
+              colors = ["rgba(232,111,12,1)", "rgba(12,151,232,1)", "rgba(232,12,96,1)", "rgba(232,184,12,1)", "rgba(222,124,0,.8)", "rgba(0,0,0,.8)", "rgba(80,158,47,.8)"]
               i += 1
               {
                 label: key,
@@ -63,7 +63,7 @@ class Graph
   def make_graph_cost
     i = -1
     dataset_array = @graph_package.map do |key, value |
-              colors = ["rgba(49,115,126,.8)", "rgba(245,185,69,.8)", "rgba(31,160,132,.8)", "rgba(47,186,157,.8)", "rgba(222,124,0,.8)", "rgba(49,136,253,.8)", "rgba(80,158,47,.8)"]
+              colors = ["rgba(232,111,12,1)", "rgba(12,151,232,1)", "rgba(232,12,96,1)", "rgba(232,184,12,1)", "rgba(222,124,0,.8)", "rgba(0,0,0,.8)", "rgba(80,158,47,.8)"]
               i += 1
               {
                 label: key,
@@ -97,7 +97,7 @@ class Graph
     def make_graph_conversions
     i = -1
     dataset_array = @graph_package.map do |key, value |
-              colors = ["rgba(49,115,126,.8)", "rgba(245,185,69,.8)", "rgba(31,160,132,.8)", "rgba(47,186,157,.8)", "rgba(222,124,0,.8)", "rgba(49,136,253,.8)", "rgba(80,158,47,.8)"]
+              colors = ["rgba(232,111,12,1)", "rgba(12,151,232,1)", "rgba(232,12,96,1)", "rgba(232,184,12,1)", "rgba(222,124,0,.8)", "rgba(0,0,0,.8)", "rgba(80,158,47,.8)"]
               i += 1
               {
                 label: key,
@@ -131,7 +131,7 @@ class Graph
   def make_graph_ctr
         i = -1
         dataset_array = @graph_package.map do |key, value |
-                  colors = ["rgba(49,115,126,.8)", "rgba(245,185,69,.8)", "rgba(31,160,132,.8)", "rgba(47,186,157,.8)", "rgba(222,124,0,.8)", "rgba(49,136,253,.8)", "rgba(80,158,47,.8)"]
+                  colors = ["rgba(232,111,12,1)", "rgba(12,151,232,1)", "rgba(232,12,96,1)", "rgba(232,184,12,1)", "rgba(222,124,0,.8)", "rgba(0,0,0,.8)", "rgba(80,158,47,.8)"]
                   i += 1
                   {
                     label: key,
@@ -152,7 +152,7 @@ class Graph
        def make_graph_conv_rate
         i = -1
         dataset_array = @graph_package.map do |key, value |
-                  colors = ["rgba(49,115,126,.8)", "rgba(245,185,69,.8)", "rgba(31,160,132,.8)", "rgba(47,186,157,.8)", "rgba(222,124,0,.8)", "rgba(49,136,253,.8)", "rgba(80,158,47,.8)"]
+                  colors = ["rgba(232,111,12,1)", "rgba(12,151,232,1)", "rgba(232,12,96,1)", "rgba(232,184,12,1)", "rgba(222,124,0,.8)", "rgba(0,0,0,.8)", "rgba(80,158,47,.8)"]
                   i += 1
                   {
                     label: key,
@@ -174,7 +174,7 @@ class Graph
        def make_graph_cpa
         i = -1
         dataset_array = @graph_package.map do |key, value |
-                  colors = ["rgba(49,115,126,.8)", "rgba(245,185,69,.8)", "rgba(31,160,132,.8)", "rgba(47,186,157,.8)", "rgba(222,124,0,.8)", "rgba(49,136,253,.8)", "rgba(80,158,47,.8)"]
+                  colors = ["rgba(232,111,12,1)", "rgba(12,151,232,1)", "rgba(232,12,96,1)", "rgba(232,184,12,1)", "rgba(222,124,0,.8)", "rgba(0,0,0,.8)", "rgba(80,158,47,.8)"]
                   i += 1
                   {
                     label: key,
@@ -196,7 +196,7 @@ class Graph
        def make_graph_cpc
         i = -1
         dataset_array = @graph_package.map do |key, value |
-                  colors = ["rgba(49,115,126,.8)", "rgba(245,185,69,.8)", "rgba(31,160,132,.8)", "rgba(47,186,157,.8)", "rgba(222,124,0,.8)", "rgba(49,136,253,.8)", "rgba(80,158,47,.8)"]
+                  colors = ["rgba(232,111,12,1)", "rgba(12,151,232,1)", "rgba(232,12,96,1)", "rgba(232,184,12,1)", "rgba(222,124,0,.8)", "rgba(0,0,0,.8)", "rgba(80,158,47,.8)"]
                   i += 1
                   {
                     label: key,
