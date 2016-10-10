@@ -4,7 +4,7 @@
   :oauth2_client_id: ENV['adwords_oauth2_client_id']
   :oauth2_client_secret: ENV['adwords_oauth2_client_secret']
   :developer_token: ENV['adwords_developer_token']
-  :client_customer_id: ENV['adwords_client_customer_id']
+  :client_customer_id: 613-715-8320
   :user_agent: "Native App"
   :oauth2_token:
     :access_token: ya29.CjBmAzbmuC-fOgwFEB1lxqig2xfzWW3x2wPZxzbm9hVgRuN4LVwN2d-2W36sz87WP_Y
