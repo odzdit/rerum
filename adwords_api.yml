@@ -7,8 +7,8 @@
   :client_customer_id: 613-715-8320
   :user_agent: "Native App"
   :oauth2_token:
-    :access_token: ya29.CjBmAzbmuC-fOgwFEB1lxqig2xfzWW3x2wPZxzbm9hVgRuN4LVwN2d-2W36sz87WP_Y
-    :refresh_token: 1/98EYWfewnV_zkDEE4zBaBtmH5mGy12Vxm7fUIeURLxc
+    :access_token: 
+    :refresh_token: 
     :issued_at: 2016-09-06 20:26:19.967783000 -04:00
     :expires_in: 3600
     :id_token: 
