@@ -1,7 +1,7 @@
 ---
 :authentication:
   :method: OAuth2
-  :oauth2_client_id: ENV['adwords_oauth2_client_id']
+  :oauth2_client_id: 432131501221-5v8d2qf2be59mu79eai30livetqpscbe.apps.googleusercontent.com
   :oauth2_client_secret: ENV['adwords_oauth2_client_secret']
   :developer_token: ENV['adwords_developer_token']
   :client_customer_id: 613-715-8320
