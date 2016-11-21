@@ -35,7 +35,8 @@ $(document).ready(function(){
     $("td:contains('Easy')").addClass("easy");
     $("td:contains('Medium')").addClass("medium");
     $("td:contains('Hard')").addClass("hard");
-
+$('.input-daterange').datepicker({
+});
 
 	
 });

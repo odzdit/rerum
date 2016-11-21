@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/Nerian/bootstrap-datepicker-rails.git
+  revision: 862e5ec85ee2da7cc8f893d6d07050cb0c1131b0
+  specs:
+    bootstrap-datepicker-rails (1.6.4.1)
+      railties (>= 3.0)
+
+GIT
   remote: git://github.com/activeadmin/inherited_resources.git
   revision: 4434f0ae72f790cf371728838c927c338100555d
   specs:
@@ -285,6 +292,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin (~> 1.0.0.pre4)
   awesome_print
+  bootstrap-datepicker-rails!
   bootstrap-sass (~> 3.3.7)
   byebug
   chartjs-ror

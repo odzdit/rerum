@@ -37,7 +37,8 @@ gem "figaro"
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'google-adwords-api'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
-
+gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
+                              :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 
 gem 'rails_12factor', group: :production
 

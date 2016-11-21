@@ -21,6 +21,7 @@ class Report
       report_definition = {
         :selector => {
           :fields => ['Date','CampaignName', 'Impressions', 'Clicks', 'Cost', 'Conversions'],
+             :date_range => {:min => '20161001', :max => '20161115'},
           :predicates => [
               {:field => 'CampaignName', :operator => 'CONTAINS', :values => "_"}
           ]
@@ -28,7 +29,7 @@ class Report
         :report_name => 'Last 7 days ACCOUNT_PERFORMANCE_REPORT',
         :report_type => 'CAMPAIGN_PERFORMANCE_REPORT',
         :download_format => 'XML',
-        :date_range_type => 'LAST_7_DAYS',
+        :date_range_type => 'CUSTOM_DATE',    
       }
 
       # Optional: Set the configuration of the API instance to suppress header,

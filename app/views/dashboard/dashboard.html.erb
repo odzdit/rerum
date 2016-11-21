@@ -1,6 +1,17 @@
 <% if user_signed_in? %>
   <h1 class="dash-title">Hello <%= current_user.name %> Welcome to Your Dashboard:</h1>
-<h3 class="dash-title">You're viewing Clicks</h3>
+    <h3 class="dash-title">You're viewing Clicks</h3>
+    
+    <form class="form-inline" action="/dashboard" method="get">
+        <div class="input-daterange input-group date-range" id="datepicker">
+            <input type="text" class="input-sm form-control" name="start" />
+            <!--<span class="input-group-addon">to</span>-->
+            <input type="text" class="input-sm form-control" name="end" />
+            <button type="submit" form="datepicker" value="Submit" class="btn btn-danger navbar-btn">Go</button> 
+        </form>
+        
+    </div>
+            
  <% else %>
   <h1 class="dash-title">Nobody Logged In</h1>
  <% end %>
